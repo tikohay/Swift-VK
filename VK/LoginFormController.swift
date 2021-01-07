@@ -15,10 +15,6 @@ class LoginFormController: UIViewController {
     @IBOutlet weak var loginVK: UITextField!
     @IBOutlet weak var passwordVK: UITextField!
     
-    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,13 +24,9 @@ class LoginFormController: UIViewController {
         loginButton.layer.cornerRadius = 10
         loginButton.clipsToBounds = true
         
-        
-        
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
     }
-    
-    
     
     @objc func keyboardWasShown(notification: Notification) {
         let info = notification.userInfo! as NSDictionary
@@ -69,34 +61,5 @@ class LoginFormController: UIViewController {
 
     @objc func hideKeyboard() {
         self.scrollView?.endEditing(true)
-    }
-    
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        let checkResult = checkUserData()
-        
-        if !checkResult {
-            showLoginError()
-        }
-        return checkResult
-    }
-    
-    func checkUserData() -> Bool {
-        guard let login = loginVK.text, let password = passwordVK.text else {
-            return false
-        }
-        
-        if login == "admin" && password == "1234567" {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func showLoginError() {
-        let alert = UIAlertController(title: "Ошибка", message: "вы ввели неправильные данные", preferredStyle: .alert)
-        let action = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
     }
 }
