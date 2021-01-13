@@ -29,7 +29,7 @@ class FriendsCell: UITableViewCell {
     
     func set(user: User) {
         self.nameFriend.text = user.firstName + " " + user.lastName
-        self.imageFriend.image = user.image
+        self.imageFriend.image = user.profilPic
         
         if (user.isBestFriend) {
             self.starIcon.isHidden = false

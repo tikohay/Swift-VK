@@ -20,7 +20,6 @@ class LoginFormController: UIViewController {
     }
     
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,11 +30,13 @@ class LoginFormController: UIViewController {
         loginButton.clipsToBounds = true
         
         
-        
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
     }
     
+    @objc func hideKeyboard() {
+        self.scrollView?.endEditing(true)
+    }
     
     
     @objc func keyboardWasShown(notification: Notification) {
@@ -69,36 +70,34 @@ class LoginFormController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
     }
 
-    @objc func hideKeyboard() {
-        self.scrollView?.endEditing(true)
-    }
     
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        let checkResult = checkUserData()
-        
-        if !checkResult {
-            showLoginError()
-        }
-        return checkResult
-    }
     
-    func checkUserData() -> Bool {
-        guard let login = loginVK.text, let password = passwordVK.text else {
-            return false
-        }
-        
-        if login == "admin" && password == "1234567" {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func showLoginError() {
-        let alert = UIAlertController(title: "Ошибка", message: "вы ввели неправильные данные", preferredStyle: .alert)
-        let action = UIAlertAction(title: "ok", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
+//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+//        let checkResult = checkUserData()
+//        
+//        if !checkResult {
+//            showLoginError()
+//        }
+//        return checkResult
+//    }
+//    
+//    func checkUserData() -> Bool {
+//        guard let login = loginVK.text, let password = passwordVK.text else {
+//            return false
+//        }
+//        
+//        if login == "admin" && password == "1234567" {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+//    
+//    func showLoginError() {
+//        let alert = UIAlertController(title: "Ошибка", message: "вы ввели неправильные данные", preferredStyle: .alert)
+//        let action = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+//        alert.addAction(action)
+//        present(alert, animated: true, completion: nil)
+//    }
 }

@@ -14,7 +14,6 @@ class FriendsController: UITableViewController {
         
     }
     
-
     enum Segues {
         static let toPhoto = "ToPhotoController"
     }
@@ -27,18 +26,13 @@ class FriendsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.register(CustomTableViewCell.nib(), forCellReuseIdentifier: CustomTableViewCell.identifier)
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return users.count
     }
     
@@ -46,25 +40,13 @@ class FriendsController: UITableViewController {
         return 80
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.toPhoto {
-        let destVC = segue.destination as! PhotoController
-        destVC.image = sender as? UIImage
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user = users[indexPath.row]
-        performSegue(withIdentifier: Segues.toPhoto, sender: user.image)
-    }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.friend, for: indexPath) as! FriendsCell
-//
-//
+
+
         let user = users[indexPath.row]
-//
+
         cell.set(user: user)
 
         return cell
@@ -75,43 +57,20 @@ class FriendsController: UITableViewController {
  
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.toPhoto {
+        let destVC = segue.destination as! PhotoFriendController
+        destVC.user = sender as? User
+        }
+    }
     
-    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let favoriteFriend = myFavoriteFriend(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [favoriteFriend])
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        performSegue(withIdentifier: Segues.toPhoto, sender: user)
     }
     
     
     
-   
-    func myFavoriteFriend(at indexPath: IndexPath) -> UIContextualAction {
-        
-        var user = users[indexPath.row]
-        
-        let action = UIContextualAction(style: .normal, title: "best friend") { (action, view, completion) in
-            
-            user.isBestFriend = !user.isBestFriend
-            
-            users.remove(at: indexPath.row)
-            
-            if user.isBestFriend {
-                users.insert(user, at: 0)
-            } else {
-                users.append(user)
-            }
-            self.tableView.reloadData()
-            completion(true)
-        }
-        
-        if user.isBestFriend {
-            action.image = UIImage(systemName: "star.slash")
-            action.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        } else {
-            action.image = UIImage(systemName: "star")
-            action.backgroundColor = #colorLiteral(red: 0, green: 0.4524545074, blue: 0.9992441535, alpha: 1)
-        }
-        return action
-    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -159,4 +118,45 @@ class FriendsController: UITableViewController {
     */
 
 //}
+}
+
+
+extension FriendsController {
+    
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let favoriteFriend = myFavoriteFriend(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [favoriteFriend])
+    }
+    
+   
+    func myFavoriteFriend(at indexPath: IndexPath) -> UIContextualAction {
+        
+        var user = users[indexPath.row]
+        
+        let action = UIContextualAction(style: .normal, title: "best friend") { (action, view, completion) in
+            
+            user.isBestFriend = !user.isBestFriend
+            
+            users.remove(at: indexPath.row)
+            
+            if user.isBestFriend {
+                users.insert(user, at: 0)
+            } else {
+                users.append(user)
+            }
+            self.tableView.reloadData()
+            completion(true)
+        }
+        
+        if user.isBestFriend {
+            action.image = UIImage(systemName: "star.slash")
+            action.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        } else {
+            action.image = UIImage(systemName: "star")
+            action.backgroundColor = #colorLiteral(red: 0, green: 0.4524545074, blue: 0.9992441535, alpha: 1)
+        }
+        return action
+    }
+
 }
