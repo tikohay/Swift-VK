@@ -278,11 +278,70 @@
                     <connections>
                         <outlet property="avatarFriend" destination="c3H-Lm-ak4" id="T9Z-gn-gcr"/>
                         <outlet property="nameFriend" destination="yym-CQ-uuX" id="9XH-Yi-2xe"/>
+                        <segue destination="OFT-OT-9Nu" kind="presentation" identifier="pickPhotoSegue" id="g9b-Tj-reD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="03F-1U-s1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5860" y="-599"/>
+        </scene>
+        <!--Full Screen Photo View Controller-->
+        <scene sceneID="lRF-FI-bPK">
+            <objects>
+                <viewController id="OFT-OT-9Nu" customClass="FullScreenPhotoViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1SD-un-F0j">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUU-gS-khX">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fpt-Mu-Xjz">
+                                        <rect key="frame" x="0.0" y="76" width="428" height="500"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="500" id="r3d-w8-EHa"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RiN-1o-5Aa">
+                                        <rect key="frame" x="151.66666666666666" y="606" width="124.99999999999997" height="22"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title=" Tap to Share" image="square.and.arrow.up" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="shareAction:" destination="OFT-OT-9Nu" eventType="touchUpInside" id="OW0-wn-sao"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="fCQ-Vq-VG7" firstAttribute="trailing" secondItem="fpt-Mu-Xjz" secondAttribute="trailing" id="89U-Lc-zrz"/>
+                                    <constraint firstItem="fpt-Mu-Xjz" firstAttribute="trailing" secondItem="QZK-Zg-qpE" secondAttribute="trailing" constant="428" id="ZAz-bw-Yel"/>
+                                    <constraint firstItem="fpt-Mu-Xjz" firstAttribute="top" secondItem="QZK-Zg-qpE" secondAttribute="top" constant="76" id="bs5-BN-bcM"/>
+                                    <constraint firstItem="fpt-Mu-Xjz" firstAttribute="leading" secondItem="fCQ-Vq-VG7" secondAttribute="leading" id="lYa-qs-9bP"/>
+                                    <constraint firstItem="RiN-1o-5Aa" firstAttribute="top" secondItem="fpt-Mu-Xjz" secondAttribute="bottom" constant="30" id="nbg-Vc-cyV"/>
+                                    <constraint firstItem="RiN-1o-5Aa" firstAttribute="bottom" secondItem="QZK-Zg-qpE" secondAttribute="bottom" id="s8a-Hf-H47"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="QZK-Zg-qpE"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="fCQ-Vq-VG7"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Uab-Zn-Yw8"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RiN-1o-5Aa" firstAttribute="centerX" secondItem="Uab-Zn-Yw8" secondAttribute="centerX" id="Jlo-6b-4Do"/>
+                            <constraint firstItem="mUU-gS-khX" firstAttribute="leading" secondItem="Uab-Zn-Yw8" secondAttribute="leading" id="KM1-dV-Q6M"/>
+                            <constraint firstItem="mUU-gS-khX" firstAttribute="top" secondItem="Uab-Zn-Yw8" secondAttribute="top" id="LKk-7u-sFS"/>
+                            <constraint firstItem="mUU-gS-khX" firstAttribute="trailing" secondItem="Uab-Zn-Yw8" secondAttribute="trailing" id="Mbc-RF-dvu"/>
+                            <constraint firstAttribute="bottom" secondItem="mUU-gS-khX" secondAttribute="bottom" id="YbG-yO-e7V"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fullScreenPhoto" destination="fpt-Mu-Xjz" id="8gq-8G-kWY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tyf-mT-bzF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6752.8037383177571" y="-599.35205183585322"/>
         </scene>
         <!--my groups-->
         <scene sceneID="wmm-lJ-MWq">
@@ -503,6 +562,7 @@
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rectangle.grid.1x2.fill" catalog="system" width="128" height="101"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="vk5" width="75" height="75"/>
         <systemColor name="systemBackgroundColor">

@@ -27,6 +27,7 @@
 		3C6D10A125A30ED600674774 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C6D10A025A30ED600674774 /* Assets.xcassets */; };
 		3C6D10A425A30ED600674774 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C6D10A225A30ED600674774 /* LaunchScreen.storyboard */; };
 		3C6D10B025A3592D00674774 /* LoginFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6D10AF25A3592D00674774 /* LoginFormController.swift */; };
+		3CC901D125B0A35D00D0AA56 /* FullScreenPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC901D025B0A35D00D0AA56 /* FullScreenPhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		3C6D10A325A30ED600674774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C6D10A525A30ED600674774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C6D10AF25A3592D00674774 /* LoginFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormController.swift; sourceTree = "<group>"; };
+		3CC901D025B0A35D00D0AA56 /* FullScreenPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				3C1C6D4025AE054B00E73FF4 /* PhotoFriendController.swift */,
 				3C1C6D4425AE058D00E73FF4 /* PhotoOfFriendCell.swift */,
+				3CC901D025B0A35D00D0AA56 /* FullScreenPhotoViewController.swift */,
 			);
 			path = PhotoFriend;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				3C6B619B25A9B71A00261222 /* FriendsController.swift in Sources */,
 				3C6B61A425A9B79C00261222 /* GroupsCell.swift in Sources */,
 				3C6B61B925A9BBE400261222 /* PhotoController.swift in Sources */,
+				3CC901D125B0A35D00D0AA56 /* FullScreenPhotoViewController.swift in Sources */,
 				3C6B61C125A9BD3B00261222 /* Group.swift in Sources */,
 				3C6D109825A30ED500674774 /* AppDelegate.swift in Sources */,
 				3C1C6D4125AE054B00E73FF4 /* PhotoFriendController.swift in Sources */,

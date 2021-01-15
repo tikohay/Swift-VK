@@ -27,9 +27,17 @@ class PhotoFriendController: UIViewController {
         super.viewDidLoad()
         self.avatarFriend.image = user?.profilPic
         self.nameFriend.text = user?.firstName
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pickPhotoSegue" {
+            let photoVC = segue.destination as! FullScreenPhotoViewController
+            let cell = sender as! PhotoOfFriendCell
+            photoVC.image = cell.imageFriend.image
+        }
     }
 }
+
 
 
 extension PhotoFriendController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

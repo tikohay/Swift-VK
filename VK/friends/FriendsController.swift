@@ -63,7 +63,7 @@ class FriendsController: UITableViewController {
         destVC.user = sender as? User
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = users[indexPath.row]
         performSegue(withIdentifier: Segues.toPhoto, sender: user)
