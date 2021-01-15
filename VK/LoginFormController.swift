@@ -9,11 +9,12 @@ import UIKit
 
 class LoginFormController: UIViewController {
     
-    @IBOutlet weak var logoVK: UIImageView!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var loginVK: UITextField!
-    @IBOutlet weak var passwordVK: UITextField!
+    @IBOutlet weak var logoVKImage: UIImageView?
+    @IBOutlet weak var loginButton: UIButton?
+    @IBOutlet weak var scrollView: UIScrollView?
+    @IBOutlet weak var loginVKTextField: UITextField?
+    @IBOutlet weak var passwordVKTextField: UITextField?
+    @IBOutlet weak var loginStackView: UIStackView!
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
     }
@@ -49,11 +50,19 @@ class LoginFormController: UIViewController {
     }
     
     private func prepareElementsToView() {
-        logoVK.layer.cornerRadius = 20
-        logoVK.clipsToBounds = true
+        logoVKImage?.layer.cornerRadius = 20
+        logoVKImage?.clipsToBounds = true
         
-        loginButton.layer.cornerRadius = 10
-        loginButton.clipsToBounds = true
+        loginButton?.layer.cornerRadius = 10
+        loginButton?.clipsToBounds = true
+        
+        loginStackView.spacing = 0.2
+        
+        loginVKTextField?.layer.cornerRadius = 10
+        loginVKTextField?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        passwordVKTextField?.layer.cornerRadius = 10
+        passwordVKTextField?.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
     
     private func addKeyboardObservers() {
@@ -84,7 +93,7 @@ class LoginFormController: UIViewController {
     }
     
     private func checkUserData() -> Bool {
-        guard let login = loginVK.text, let password = passwordVK.text else {
+        guard let login = loginVKTextField?.text, let password = passwordVKTextField?.text else {
             return false
         }
         
@@ -124,3 +133,4 @@ class LoginFormController: UIViewController {
         self.scrollView?.endEditing(true)
     }
 }
+
