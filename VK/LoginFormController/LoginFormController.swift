@@ -9,13 +9,34 @@ import UIKit
 
 class LoginFormController: UIViewController {
 
-    @IBOutlet weak var logoVK: UIImageView!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var loginVK: UITextField!
-    @IBOutlet weak var passwordVK: UITextField!
+    @IBOutlet weak var logoVKImage: UIImageView?
+    @IBOutlet weak var loginButton: UIButton?
+    @IBOutlet weak var scrollView: UIScrollView?
+    @IBOutlet weak var loginVKTextField: UITextField?
+    @IBOutlet weak var passwordVKTextField: UITextField?
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var hidePasswordButton: UIButton?
+    
+    private var isPasswordHidden = true
+    
+    @IBAction func onHidePasswordButtonClick(_ sender: UIButton) {
+        
+        let imageEye = UIImage(systemName: "eye")
+        let imageEyeSlash = UIImage(systemName: "eye.slash")
+        
+        if isPasswordHidden {
+            passwordVKTextField?.isSecureTextEntry = false
+            sender.setImage(imageEyeSlash, for: .normal)
+        } else {
+            passwordVKTextField?.isSecureTextEntry = true
+            sender.setImage(imageEye, for: .normal)
+        }
+        
+        isPasswordHidden.toggle()
+    }
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
+        
     }
     
     private var keyboardShown = false
@@ -49,11 +70,19 @@ class LoginFormController: UIViewController {
     }
     
     private func prepareElementsToView() {
-        logoVK.layer.cornerRadius = 20
-        logoVK.clipsToBounds = true
+        logoVKImage?.layer.cornerRadius = 20
+        logoVKImage?.clipsToBounds = true
         
-        loginButton.layer.cornerRadius = 10
-        loginButton.clipsToBounds = true
+        loginButton?.layer.cornerRadius = 10
+        loginButton?.clipsToBounds = true
+        
+        stackView.spacing = 0.2
+        
+        loginVKTextField?.layer.cornerRadius = 10
+        loginVKTextField?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        passwordVKTextField?.layer.cornerRadius = 10
+        passwordVKTextField?.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
     
     private func addKeyboardObservers() {
@@ -111,6 +140,8 @@ class LoginFormController: UIViewController {
         self.scrollView?.contentInset = contentInsets
         scrollView?.scrollIndicatorInsets = contentInsets
         keyboardShown = true
+        
+        hidePasswordButton?.isHidden = false
     }
     
     @objc private func keyboardWillBeHidden() {
@@ -118,6 +149,8 @@ class LoginFormController: UIViewController {
         let contentInsets = UIEdgeInsets.zero
         scrollView?.contentInset = contentInsets
         keyboardShown = false
+        
+        hidePasswordButton?.isHidden = true
     }
     
     @objc private func hideKeyboard() {

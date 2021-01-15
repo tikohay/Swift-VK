@@ -23,19 +23,13 @@ class AvailableGroups: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        tableView.register(CustomTableViewCell.nib(), forCellReuseIdentifier: CustomTableViewCell.identifier)
     }
 
-    
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return availableGroups.count
     }
 
@@ -44,9 +38,8 @@ class AvailableGroups: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.availableGroup, for: indexPath) as! AvailableGroupsCell
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.availableGroup, for: indexPath) as! AvailableGroupsCell
         let group = availableGroups[indexPath.row]
         
         cell.set(availableGroup: group)

@@ -11,13 +11,11 @@ class FullScreenPhotoViewController: UIViewController {
 
     var image: UIImage?
     
-    @IBOutlet weak var fullScreenPhoto: UIImageView!
-    
-    
+    @IBOutlet weak var fullScreenPhoto: UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fullScreenPhoto.image = image
+        self.fullScreenPhoto?.image = image
         
     }
    

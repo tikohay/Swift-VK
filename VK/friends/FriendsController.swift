@@ -22,10 +22,8 @@ class FriendsController: UITableViewController {
         static let friend = "friendsCell"
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,27 +38,19 @@ class FriendsController: UITableViewController {
         return 80
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.friend, for: indexPath) as! FriendsCell
-
-
         let user = users[indexPath.row]
 
         cell.set(user: user)
 
         return cell
-        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
-//
-//        cell.set(label: user.firstName + " " + user.lastName, imageName: user.image)
- 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.toPhoto {
-        let destVC = segue.destination as! PhotoFriendController
-        destVC.user = sender as? User
+            guard let destVC = segue.destination as? PhotoFriendController else { return }
+            destVC.user = sender as? User
         }
     }
 
@@ -69,12 +59,10 @@ class FriendsController: UITableViewController {
         performSegue(withIdentifier: Segues.toPhoto, sender: user)
     }
     
-    
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let favoriteFriend = myFavoriteFriend(at: indexPath)
         return UISwipeActionsConfiguration(actions: [favoriteFriend])
     }
-    
    
     func myFavoriteFriend(at indexPath: IndexPath) -> UIContextualAction {
         
@@ -83,7 +71,6 @@ class FriendsController: UITableViewController {
         let action = UIContextualAction(style: .normal, title: "best friend") { (action, view, completion) in
             
             user.isBestFriend = !user.isBestFriend
-            
             users.remove(at: indexPath.row)
             
             if user.isBestFriend {

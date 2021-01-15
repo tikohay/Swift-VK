@@ -9,36 +9,32 @@ import UIKit
 
 class PhotoFriendController: UIViewController {
 
-    let itemsPerRow: CGFloat = 2
-    let sectionInserts = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-    
     enum Cells {
         static let identifier = "PhotoFriendCell"
     }
     
-    @IBOutlet weak var avatarFriend: UIImageView!
-    @IBOutlet weak var nameFriend: UILabel!
-    
-    
     var user: User?
     
+    @IBOutlet weak var friendAvatarImage: UIImageView?
+    @IBOutlet weak var friendNameLabel: UILabel?
     
+    private let itemsPerRow: CGFloat = 2
+    private let sectionInserts = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.avatarFriend.image = user?.profilPic
-        self.nameFriend.text = user?.firstName
+        self.friendAvatarImage?.image = user?.avatar
+        self.friendNameLabel?.text = user?.firstName
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pickPhotoSegue" {
             let photoVC = segue.destination as! FullScreenPhotoViewController
-            let cell = sender as! PhotoOfFriendCell
-            photoVC.image = cell.imageFriend.image
+            guard let cell = sender as? PhotoOfFriendCell else { return }
+            photoVC.image = cell.friendImage?.image
         }
     }
 }
-
-
 
 extension PhotoFriendController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -51,7 +47,7 @@ extension PhotoFriendController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.identifier, for: indexPath) as! PhotoOfFriendCell
         
-        cell.imageFriend.image = user?.images[indexPath.item]
+        cell.friendImage?.image = user?.images[indexPath.item]
         
         return cell
     }

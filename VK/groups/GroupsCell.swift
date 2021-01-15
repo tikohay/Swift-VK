@@ -9,30 +9,24 @@ import UIKit
 
 class GroupsCell: UITableViewCell {
 
-    
-    @IBOutlet weak var imageGroup: UIImageView! {
+    @IBOutlet weak var groupImageView: UIImageView? {
         didSet {
-            imageGroup.layer.cornerRadius = imageGroup.frame.width / 2
+            guard let image = groupImageView else { return }
+            image.layer.cornerRadius = image.frame.width / 2
         }
     }
-    @IBOutlet weak var nameGroup: UILabel!
-    
-    
+    @IBOutlet weak var nameGroupLabel: UILabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func set(group: Group) {
-        self.imageGroup.image = group.image
-        self.nameGroup.text = group.name
+        self.groupImageView?.image = group.image
+        self.nameGroupLabel?.text = group.name
     }
-
 }

@@ -5,7 +5,6 @@
 //  Created by Karahanyan Levon on 09.01.2021.
 //
 
-import Foundation
 import UIKit
 
 struct Group {
