@@ -8,20 +8,20 @@
 import UIKit
 
 class GroupsController: UITableViewController {
-    
+
     enum Cells {
         static let group = "groupsCell"
     }
-    
+
     var groups: [Group] = []
-    
+
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         if segue.identifier == "addGroup" {
             guard let availableGroupsController = segue.source as? AvailableGroups else { return }
-            
+
             if let indexPath = availableGroupsController.tableView.indexPathForSelectedRow {
                 let group = availableGroupsController.availableGroups[indexPath.row]
-                
+
                 if !groups.contains(where: {$0.name == group.name && $0.image == group.image}) {
                     groups.append(group)
                     tableView.reloadData()
@@ -29,7 +29,7 @@ class GroupsController: UITableViewController {
             }
         }
     }
- 
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -41,27 +41,29 @@ class GroupsController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.group, for: indexPath) as! GroupsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.group, for: indexPath)
+        guard let groupCell = cell  as? GroupsCell else { return cell }
+
         let group = groups[indexPath.row]
-        
-        cell.set(group: group)
-        
-        return cell
+
+        groupCell.set(group: group)
+
+        return groupCell
     }
- 
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             groups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
+
 
     /*
     // Override to support rearranging the table view.

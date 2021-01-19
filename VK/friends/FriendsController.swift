@@ -9,19 +9,19 @@ import UIKit
 
 
 class FriendsController: UITableViewController {
-    
+
     @IBAction func back(segue: UIStoryboardSegue) {
-        
+
     }
-    
+
     enum Segues {
         static let toPhoto = "ToPhotoController"
     }
-    
+
     enum Cells {
         static let friend = "friendsCell"
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -33,20 +33,22 @@ class FriendsController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.friend, for: indexPath) as! FriendsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.friend, for: indexPath)
+        guard let friendCell = cell as? FriendsCell else { return cell }
+
         let user = users[indexPath.row]
 
-        cell.set(user: user)
+        friendCell.set(user: user)
 
-        return cell
+        return friendCell
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.toPhoto {
             guard let destVC = segue.destination as? PhotoFriendController else { return }
@@ -58,21 +60,22 @@ class FriendsController: UITableViewController {
         let user = users[indexPath.row]
         performSegue(withIdentifier: Segues.toPhoto, sender: user)
     }
-    
+
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let favoriteFriend = myFavoriteFriend(at: indexPath)
         return UISwipeActionsConfiguration(actions: [favoriteFriend])
     }
-   
+
     func myFavoriteFriend(at indexPath: IndexPath) -> UIContextualAction {
-        
+
         var user = users[indexPath.row]
-        
+
         let action = UIContextualAction(style: .normal, title: "best friend") { (action, view, completion) in
-            
-            user.isBestFriend = !user.isBestFriend
+
+            user.isBestFriend.toggle()
+
             users.remove(at: indexPath.row)
-            
+
             if user.isBestFriend {
                 users.insert(user, at: 0)
             } else {
@@ -81,7 +84,7 @@ class FriendsController: UITableViewController {
             self.tableView.reloadData()
             completion(true)
         }
-        
+
         if user.isBestFriend {
             action.image = UIImage(systemName: "star.slash")
             action.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -92,7 +95,7 @@ class FriendsController: UITableViewController {
         return action
     }
 
-    
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -110,7 +113,7 @@ class FriendsController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 

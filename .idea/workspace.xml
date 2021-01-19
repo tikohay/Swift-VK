@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bddf3c3b-499e-42f5-98b3-fbf26d5baf21" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/VK.xcodeproj/project.xcworkspace/xcuserdata/karahanyanlevon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/VK.xcodeproj/project.xcworkspace/xcuserdata/karahanyanlevon.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VK/LoginFormController/LoginFormController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/VK/LoginFormController/LoginFormController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VK/PhotoFriend/PhotoFriendController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/VK/PhotoFriend/PhotoFriendController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VK/availableGroups/AvailableGroups.swift" beforeDir="false" afterPath="$PROJECT_DIR$/VK/availableGroups/AvailableGroups.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VK/friends/FriendsController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/VK/friends/FriendsController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VK/groups/GroupsController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/VK/groups/GroupsController.swift" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1nHa9gotBoIheQOKNmX0J6l8M13" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bddf3c3b-499e-42f5-98b3-fbf26d5baf21" name="Default Changelist" comment="" />
+      <created>1611049320770</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611049320770</updated>
+      <workItem from="1611049322380" duration="135000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="100" y="100" width="1592" height="920" key="DiffContextDialog" timestamp="1611049458019">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="100" y="100" width="1592" height="920" key="DiffContextDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1611049458019" />
+    <state x="100" y="100" width="1592" height="920" key="ShowDiffWithBranchDialog" timestamp="1611049458020">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="100" y="100" width="1592" height="920" key="ShowDiffWithBranchDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1611049458020" />
+  </component>
+</project>
