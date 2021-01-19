@@ -200,7 +200,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="hcn-Il-710" kind="show" identifier="ToPhotoController" id="eYG-nK-kDq"/>
+                        <segue destination="hcn-Il-710" kind="show" identifier="ToPhotoController" id="xX0-zM-TSL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KDV-uz-92X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -261,7 +261,7 @@
                                                 </collectionViewCellContentView>
                                                 <connections>
                                                     <outlet property="friendImage" destination="dmv-cW-dWX" id="xxK-Ra-Q12"/>
-                                                    <segue destination="OFT-OT-9Nu" kind="presentation" identifier="pickPhotoSegue" id="ilX-5Y-Z0i"/>
+                                                    <segue destination="OFT-OT-9Nu" kind="presentation" identifier="pickPhotoSegue" id="J4W-HO-0pG"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -359,6 +359,7 @@
                             <constraint firstAttribute="bottom" secondItem="mUU-gS-khX" secondAttribute="bottom" id="YbG-yO-e7V"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="o0Y-fl-pKo"/>
                     <connections>
                         <outlet property="fullScreenPhoto" destination="fpt-Mu-Xjz" id="8gq-8G-kWY"/>
                     </connections>

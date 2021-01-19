@@ -45,11 +45,12 @@ extension PhotoFriendController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.identifier, for: indexPath) as! PhotoOfFriendCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.identifier, for: indexPath)
+        guard let photoCell = cell as? PhotoOfFriendCell else { return cell }
+
+        photoCell.friendImage?.image = user?.images[indexPath.item]
         
-        cell.friendImage?.image = user?.images[indexPath.item]
-        
-        return cell
+        return photoCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -39,12 +39,14 @@ class AvailableGroups: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.availableGroup, for: indexPath) as! AvailableGroupsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.availableGroup, for: indexPath)
+        guard let availableGroupCell = cell  as? AvailableGroupsCell else { return cell }
+        
         let group = availableGroups[indexPath.row]
         
-        cell.set(availableGroup: group)
+        availableGroupCell.set(availableGroup: group)
         
-        return cell
+        return availableGroupCell
     }
     
 

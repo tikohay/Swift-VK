@@ -39,12 +39,14 @@ class FriendsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.friend, for: indexPath) as! FriendsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.friend, for: indexPath)
+        guard let friendCell = cell as? FriendsCell else { return cell }
+        
         let user = users[indexPath.row]
 
-        cell.set(user: user)
+        friendCell.set(user: user)
 
-        return cell
+        return friendCell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,7 +72,8 @@ class FriendsController: UITableViewController {
         
         let action = UIContextualAction(style: .normal, title: "best friend") { (action, view, completion) in
             
-            user.isBestFriend = !user.isBestFriend
+            user.isBestFriend.toggle()
+            
             users.remove(at: indexPath.row)
             
             if user.isBestFriend {

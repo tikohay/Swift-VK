@@ -113,15 +113,15 @@ class LoginFormController: UIViewController {
     }
     
     private func checkUserData() -> Bool {
-//        guard let login = loginVK.text, let password = passwordVK.text else {
-//            return false
-//        }
+        guard let login = loginVKTextField?.text, let password = passwordVKTextField?.text else {
+            return false
+        }
         
-//        if login == "admin" && password == "1234567" {
+        if login == "admin" && password == "1234567" {
             return true
-//        } else {
-//            return false
-//        }
+        } else {
+            return false
+        }
     }
     
     private func showLoginError() {

@@ -47,12 +47,14 @@ class GroupsController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.group, for: indexPath) as! GroupsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.group, for: indexPath)
+        guard let groupCell = cell  as? GroupsCell else { return cell }
+        
         let group = groups[indexPath.row]
         
-        cell.set(group: group)
+        groupCell.set(group: group)
         
-        return cell
+        return groupCell
     }
  
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
