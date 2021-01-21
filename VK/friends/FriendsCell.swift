@@ -16,8 +16,14 @@ class FriendsCell: UITableViewCell {
             image.layer.cornerRadius = image.frame.width / 2
         }
     }
-    @IBOutlet weak var friendNameLabel: UILabel!
-   
+    @IBOutlet weak var subViewForImage: UIView! {
+        didSet {
+            guard let friendImage = friendImage else { return }
+            subViewForImage.layer.cornerRadius = friendImage.frame.width / 2
+        }
+    }
+    @IBOutlet weak var friendNameLabel: UILabel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -27,7 +33,7 @@ class FriendsCell: UITableViewCell {
     }
     
     func set(user: User) {
-        self.friendNameLabel.text = user.firstName + " " + user.lastName
+        self.friendNameLabel?.text = user.firstName + " " + user.lastName
         self.friendImage?.image = user.avatar
         
         if (user.isBestFriend) {
@@ -35,5 +41,19 @@ class FriendsCell: UITableViewCell {
         } else {
             self.starIconImage?.isHidden = true
         }
+    }
+}
+
+extension UIView {
+    
+    func setShadowWithCornerRadius(shadowColor: UIColor,
+                                   shadowOffSet: CGSize = .zero,
+                                   shadowOpacity: Float,
+                                   shadowRadis: CGFloat) {
+        
+        layer.shadowColor = shadowColor.cgColor
+        layer.shadowOffset = shadowOffSet
+        layer.shadowOpacity = shadowOpacity
+        layer.shadowRadius = shadowRadis
     }
 }

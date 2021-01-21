@@ -17,7 +17,8 @@ class PhotoFriendController: UIViewController {
 
     @IBOutlet weak var friendAvatarImage: UIImageView?
     @IBOutlet weak var friendNameLabel: UILabel?
-
+    
+    
     private let itemsPerRow: CGFloat = 2
     private let sectionInserts = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
 
@@ -47,9 +48,9 @@ extension PhotoFriendController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.identifier, for: indexPath)
         guard let photoCell = cell as? PhotoOfFriendCell else { return cell }
-
+        
         photoCell.friendImage?.image = user?.images[indexPath.item]
-
+        
         return photoCell
     }
 

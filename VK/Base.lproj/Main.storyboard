@@ -134,13 +134,14 @@
         <scene sceneID="Xo9-8D-2gk">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="hUg-KY-CrS" customClass="FriendsController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ift-aL-bcp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="ift-aL-bcp">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <inset key="separatorInset" minX="2" minY="0.0" maxX="40" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendsCell" rowHeight="85" id="9he-cD-oD1" customClass="FriendsCell" customModule="VK" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="428" height="85"/>
+                                <rect key="frame" x="0.0" y="55.333332061767578" width="428" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9he-cD-oD1" id="WwD-Zr-Wot">
                                     <rect key="frame" x="0.0" y="0.0" width="428" height="85"/>
@@ -149,13 +150,25 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="hf8-8T-YbK">
                                             <rect key="frame" x="10" y="10" width="418" height="65"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZKe-RB-usW">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2So-aX-Mks">
                                                     <rect key="frame" x="0.0" y="7.6666666666666714" width="50" height="50"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZKe-RB-usW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="50" id="5bw-68-9gC"/>
+                                                                <constraint firstAttribute="width" constant="50" id="DOK-aK-ZfK"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="5bw-68-9gC"/>
-                                                        <constraint firstAttribute="width" constant="50" id="DOK-aK-ZfK"/>
+                                                        <constraint firstItem="ZKe-RB-usW" firstAttribute="centerX" secondItem="2So-aX-Mks" secondAttribute="centerX" id="0F2-uN-vp0"/>
+                                                        <constraint firstAttribute="height" constant="50" id="SNK-nE-JGb"/>
+                                                        <constraint firstItem="ZKe-RB-usW" firstAttribute="centerY" secondItem="2So-aX-Mks" secondAttribute="centerY" id="TwO-6q-i1L"/>
+                                                        <constraint firstAttribute="width" constant="50" id="hC8-XS-CCf"/>
                                                     </constraints>
-                                                </imageView>
+                                                </view>
                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SHP-Sa-6GN">
                                                     <rect key="frame" x="53.666666666666664" y="22.333333333333332" width="19.999999999999993" height="19.666666666666668"/>
                                                     <color key="tintColor" red="0.080285333099999995" green="0.4434079528" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -184,6 +197,7 @@
                                     <outlet property="friendImage" destination="ZKe-RB-usW" id="TWV-za-BSb"/>
                                     <outlet property="friendNameLabel" destination="lex-VO-bW4" id="jsE-59-B2F"/>
                                     <outlet property="starIconImage" destination="SHP-Sa-6GN" id="rkC-jf-UOG"/>
+                                    <outlet property="subViewForImage" destination="2So-aX-Mks" id="bzl-lG-TjX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -200,7 +214,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="hcn-Il-710" kind="show" identifier="ToPhotoController" id="eYG-nK-kDq"/>
+                        <segue destination="hcn-Il-710" kind="show" identifier="ToPhotoController" id="VPQ-zy-sgg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KDV-uz-92X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -235,32 +249,48 @@
                                         <rect key="frame" x="0.0" y="436" width="428" height="279"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PpH-XO-j5c">
-                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="itemSize" width="128" height="147"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoFriendCell" id="VYj-2K-c4R" customClass="PhotoOfFriendCell" customModule="VK" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="147"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fMt-jG-udm" customClass="PhotoOfFriendCell" customModule="VK" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="147"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dmv-cW-dWX">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="125"/>
                                                         </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvV-O7-mKx">
+                                                            <rect key="frame" x="0.0" y="127" width="20.666666666666668" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="tintColor" red="0.080285333099999995" green="0.4434079528" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <state key="normal" image="heart" catalog="system">
+                                                                <color key="titleColor" red="0.080285333099999995" green="0.4434079528" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="likeButtonClicked:" destination="VYj-2K-c4R" eventType="touchUpInside" id="0W9-3z-RJS"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="dmv-cW-dWX" firstAttribute="top" secondItem="fMt-jG-udm" secondAttribute="top" id="8r5-tn-RAk"/>
                                                         <constraint firstItem="dmv-cW-dWX" firstAttribute="leading" secondItem="fMt-jG-udm" secondAttribute="leading" id="8x7-4R-EdZ"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zvV-O7-mKx" secondAttribute="trailing" constant="10" id="QZE-jH-jFc"/>
                                                         <constraint firstAttribute="trailing" secondItem="dmv-cW-dWX" secondAttribute="trailing" id="Tyo-Hd-eKw"/>
-                                                        <constraint firstAttribute="bottom" secondItem="dmv-cW-dWX" secondAttribute="bottom" id="yHX-To-ugB"/>
+                                                        <constraint firstItem="zvV-O7-mKx" firstAttribute="leading" secondItem="dmv-cW-dWX" secondAttribute="leading" id="mua-iX-wS5"/>
+                                                        <constraint firstItem="zvV-O7-mKx" firstAttribute="top" secondItem="dmv-cW-dWX" secondAttribute="bottom" constant="2" id="p59-1S-2dT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="dmv-cW-dWX" secondAttribute="bottom" constant="22" id="yHX-To-ugB"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
+                                                <size key="customSize" width="128" height="147"/>
                                                 <connections>
                                                     <outlet property="friendImage" destination="dmv-cW-dWX" id="xxK-Ra-Q12"/>
+                                                    <outlet property="likeButton" destination="zvV-O7-mKx" id="jZG-xT-5P6"/>
                                                     <segue destination="OFT-OT-9Nu" kind="presentation" identifier="pickPhotoSegue" id="ilX-5Y-Z0i"/>
                                                 </connections>
                                             </collectionViewCell>
@@ -307,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="03F-1U-s1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5860" y="-599"/>
+            <point key="canvasLocation" x="5859.8130841121492" y="-599.35205183585322"/>
         </scene>
         <!--Full Screen Photo View Controller-->
         <scene sceneID="lRF-FI-bPK">
@@ -584,6 +614,7 @@
     </scenes>
     <resources>
         <image name="eye" catalog="system" width="128" height="81"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rectangle.grid.1x2.fill" catalog="system" width="128" height="101"/>
