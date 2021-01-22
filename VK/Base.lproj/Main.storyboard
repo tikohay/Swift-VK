@@ -150,25 +150,13 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="hf8-8T-YbK">
                                             <rect key="frame" x="10" y="10" width="418" height="65"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2So-aX-Mks">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZKe-RB-usW">
                                                     <rect key="frame" x="0.0" y="7.6666666666666714" width="50" height="50"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZKe-RB-usW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="50" id="5bw-68-9gC"/>
-                                                                <constraint firstAttribute="width" constant="50" id="DOK-aK-ZfK"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="ZKe-RB-usW" firstAttribute="centerX" secondItem="2So-aX-Mks" secondAttribute="centerX" id="0F2-uN-vp0"/>
-                                                        <constraint firstAttribute="height" constant="50" id="SNK-nE-JGb"/>
-                                                        <constraint firstItem="ZKe-RB-usW" firstAttribute="centerY" secondItem="2So-aX-Mks" secondAttribute="centerY" id="TwO-6q-i1L"/>
-                                                        <constraint firstAttribute="width" constant="50" id="hC8-XS-CCf"/>
+                                                        <constraint firstAttribute="height" constant="50" id="5bw-68-9gC"/>
+                                                        <constraint firstAttribute="width" constant="50" id="DOK-aK-ZfK"/>
                                                     </constraints>
-                                                </view>
+                                                </imageView>
                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SHP-Sa-6GN">
                                                     <rect key="frame" x="53.666666666666664" y="22.333333333333332" width="19.999999999999993" height="19.666666666666668"/>
                                                     <color key="tintColor" red="0.080285333099999995" green="0.4434079528" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -197,7 +185,6 @@
                                     <outlet property="friendImage" destination="ZKe-RB-usW" id="TWV-za-BSb"/>
                                     <outlet property="friendNameLabel" destination="lex-VO-bW4" id="jsE-59-B2F"/>
                                     <outlet property="starIconImage" destination="SHP-Sa-6GN" id="rkC-jf-UOG"/>
-                                    <outlet property="subViewForImage" destination="2So-aX-Mks" id="bzl-lG-TjX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
