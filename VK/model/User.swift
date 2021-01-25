@@ -10,100 +10,100 @@ import UIKit
 struct User {
     var firstName: String
     var lastName: String
-    var avatar: UIImage?
+    var avatar: String
     var isBestFriend: Bool
-    var images: [UIImage?]
+    var images: [String]
 }
 
 var users = [
     User(firstName: "Spider",
          lastName: "Man",
-         avatar: UIImage(named: "spiderMan"),
+         avatar: "spiderMan",
          isBestFriend: false,
          images: [
-            UIImage(named: "spider1"),
-            UIImage(named: "spider2")
+            "spider1",
+            "spider2"
          ]),
     
     User(firstName: "Iron",
          lastName: "Man",
-         avatar: UIImage(named: "ironMan"),
+         avatar: "ironMan",
          isBestFriend: false,
          images: [
-            UIImage(named: "iron1"),
-            UIImage(named: "iron2")
+            "iron1",
+            "iron2"
          ]),
     
     User(firstName: "Nikol",
          lastName: "Pashinyan",
-         avatar: UIImage(named: "nikol"),
+         avatar: "nikol",
          isBestFriend: false,
          images:[
-            UIImage(named: "nikol1"),
-            UIImage(named: "nikol2")
+            "nikol1",
+            "nikol2"
          ]),
     
     User(firstName: "Kim",
          lastName: "Kardashyan",
-         avatar: UIImage(named: "Kim"),
+         avatar: "Kim",
          isBestFriend: false,
          images: [
-            UIImage(named: "kim1"),
-            UIImage(named: "kim2")
+            "kim1",
+            "kim2"
          ]),
     
     User(firstName: "Serj",
          lastName: "Tankyan",
-         avatar: UIImage(named: "serj"),
+         avatar: "serj",
          isBestFriend: false,
          images: [
-            UIImage(named: "serj1"),
-            UIImage(named: "serj2")
+            "serj1",
+            "serj2"
          ]),
     
     User(firstName: "Daron",
          lastName: "Malakyan",
-         avatar: UIImage(named: "daron"),
+         avatar: "daron",
          isBestFriend: false,
          images: [
-            UIImage(named: "daron1"),
-            UIImage(named: "daron2")
+            "daron1",
+            "daron2"
         ]),
     
     User(firstName: "Alexis",
          lastName: "Ohanian",
-         avatar: UIImage(named: "alexis"),
+         avatar: "alexis",
          isBestFriend: false,
          images: [
-            UIImage(named: "alexis1"),
-            UIImage(named: "alexis2")
+            "alexis1",
+            "alexis2"
          ]),
     
     User(firstName: "Emma",
          lastName: "Watson",
-         avatar: UIImage(named: "emma-1"),
+         avatar: "emma-1",
          isBestFriend: false,
          images: [
-            UIImage(named: "emma1"),
-            UIImage(named: "emma2")
+            "emma1",
+            "emma2"
          ]),
     
     User(firstName: "Arnold",
          lastName: "Schwarzenegger",
-         avatar: UIImage(named: "arnold"),
+         avatar: "arnold",
          isBestFriend: false,
          images: [
-            UIImage(named: "arnold1"),
-            UIImage(named: "arnold2")
+            "arnold1",
+            "arnold2"
          ]),
     
     User(firstName: "Sylvester",
          lastName: "Stallone",
-         avatar: UIImage(named: "sly"),
+         avatar: "sly",
          isBestFriend: false,
          images: [
-            UIImage(named: "sly1"),
-            UIImage(named: "sly2")
+            "sly1",
+            "sly2"
          ])
 ]
 

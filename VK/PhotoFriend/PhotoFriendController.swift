@@ -24,7 +24,8 @@ class PhotoFriendController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.friendAvatarImage?.image = user?.avatar
+        guard let imageName = user?.avatar else { return }
+        self.friendAvatarImage?.image = UIImage(named: imageName)
         self.friendNameLabel?.text = user?.firstName
     }
 
@@ -49,7 +50,7 @@ extension PhotoFriendController: UICollectionViewDelegate, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.identifier, for: indexPath)
         guard let photoCell = cell as? PhotoOfFriendCell else { return cell }
         
-        photoCell.friendImage?.image = user?.images[indexPath.item]
+        photoCell.friendImage?.image = UIImage(named: user?.images[indexPath.item] ?? "")
         
         return photoCell
     }

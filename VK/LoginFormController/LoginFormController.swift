@@ -35,7 +35,7 @@ class LoginFormController: UIViewController {
         isPasswordHidden.toggle()
     }
     
-    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
+    @IBAction func logOutSegue(unwindSegue: UIStoryboardSegue) {
         
     }
     
