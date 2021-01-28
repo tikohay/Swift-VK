@@ -9,20 +9,13 @@ import UIKit
  
 class ViewForImage: UIView {
     
-    @IBInspectable var shadowColor = UIColor.black {
-        didSet {
-            changeViewForImage()
-        }
-    }
-    @IBInspectable var shadowRadius = 4 {
-        didSet {
-            changeViewForImage()
-        }
-    }
-    @IBInspectable var shadowOpacity = 0.4 {
-        didSet {
-            changeViewForImage()
-        }
+    @IBInspectable var shadowColor = UIColor.black
+    @IBInspectable var shadowRadius = 4
+    @IBInspectable var shadowOpacity = 0.4
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        changeViewForImage()
     }
     
     required init?(coder: NSCoder) {
@@ -31,7 +24,7 @@ class ViewForImage: UIView {
     }
     
     func changeViewForImage() {
-        layer.cornerRadius = frame.width
+        layer.cornerRadius = frame.width / 2
         layer.shadowColor = shadowColor.cgColor
         layer.shadowOpacity = Float(shadowOpacity)
         layer.shadowRadius = CGFloat(shadowRadius)

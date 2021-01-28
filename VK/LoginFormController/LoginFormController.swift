@@ -19,6 +19,10 @@ class LoginFormController: UIViewController {
     
     private var isPasswordHidden = true
     
+    @IBAction func tappedLogin(_ sender: UIButton) {
+        animateView(loginButton!)
+    }
+    
     @IBAction func onHidePasswordButtonClick(_ sender: UIButton) {
         
         let imageEye = UIImage(systemName: "eye")
@@ -46,6 +50,7 @@ class LoginFormController: UIViewController {
         
         prepareElementsToView()
         addTapGestureRecognizer()
+        animateView(loginButton!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +72,26 @@ class LoginFormController: UIViewController {
             showLoginError()
         }
         return checkResult
+    }
+    
+    private func animateView(_ viewToAnimate: UIView) {
+        UIView.animate(withDuration: 0.15,
+                       delay: 0,
+                       usingSpringWithDamping: 0.2,
+                       initialSpringVelocity: 0.5,
+                       options: .curveEaseIn,
+                       animations: {
+                        viewToAnimate.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+                       }) { (_) in
+            UIView.animate(withDuration: 0.15,
+                           delay: 0,
+                           usingSpringWithDamping: 0.4,
+                           initialSpringVelocity: 2,
+                           options: .curveEaseIn,
+                           animations: {
+                            viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
+                           }, completion: nil)
+        }
     }
     
     private func prepareElementsToView() {
@@ -113,15 +138,10 @@ class LoginFormController: UIViewController {
     }
     
     private func checkUserData() -> Bool {
-//        guard let login = loginVKTextField?.text, let password = passwordVKTextField?.text else {
-//            return false
-//        }
-
-//        if login == "admin" && password == "1234567" {
-            return true
-//        } else {
-//            return false
-//        }
+        guard let login = loginVKTextField?.text, let password = passwordVKTextField?.text else {
+            return false
+        }
+        return login == "admin" && password == "1234567"
     }
     
     private func showLoginError() {

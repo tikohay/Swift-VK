@@ -10,98 +10,98 @@ import UIKit
 struct User {
     var firstName: String
     var lastName: String
-    var avatar: String
+    var avatarName: String
     var isBestFriend: Bool
-    var images: [String]
+    var imagesName: [String]
 }
 
 var users = [
     User(firstName: "Spider",
          lastName: "Man",
-         avatar: "spiderMan",
+         avatarName: "spiderMan",
          isBestFriend: false,
-         images: [
+         imagesName: [
             "spider1",
             "spider2"
          ]),
     
     User(firstName: "Iron",
          lastName: "Man",
-         avatar: "ironMan",
+         avatarName: "ironMan",
          isBestFriend: false,
-         images: [
+         imagesName: [
             "iron1",
             "iron2"
          ]),
     
     User(firstName: "Nikol",
          lastName: "Pashinyan",
-         avatar: "nikol",
+         avatarName: "nikol",
          isBestFriend: false,
-         images:[
+         imagesName:[
             "nikol1",
             "nikol2"
          ]),
     
     User(firstName: "Kim",
          lastName: "Kardashyan",
-         avatar: "Kim",
+         avatarName: "Kim",
          isBestFriend: false,
-         images: [
+         imagesName: [
             "kim1",
             "kim2"
          ]),
     
     User(firstName: "Serj",
          lastName: "Tankyan",
-         avatar: "serj",
+         avatarName: "serj",
          isBestFriend: false,
-         images: [
+         imagesName: [
             "serj1",
             "serj2"
          ]),
     
     User(firstName: "Daron",
          lastName: "Malakyan",
-         avatar: "daron",
+         avatarName: "daron",
          isBestFriend: false,
-         images: [
+         imagesName: [
             "daron1",
             "daron2"
         ]),
     
     User(firstName: "Alexis",
          lastName: "Ohanian",
-         avatar: "alexis",
+         avatarName: "alexis",
          isBestFriend: false,
-         images: [
+         imagesName: [
             "alexis1",
             "alexis2"
          ]),
     
     User(firstName: "Emma",
          lastName: "Watson",
-         avatar: "emma-1",
+         avatarName: "emma-1",
          isBestFriend: false,
-         images: [
+         imagesName: [
             "emma1",
             "emma2"
          ]),
     
     User(firstName: "Arnold",
          lastName: "Schwarzenegger",
-         avatar: "arnold",
+         avatarName: "arnold",
          isBestFriend: false,
-         images: [
+         imagesName: [
             "arnold1",
             "arnold2"
          ]),
     
     User(firstName: "Sylvester",
          lastName: "Stallone",
-         avatar: "sly",
+         avatarName: "sly",
          isBestFriend: false,
-         images: [
+         imagesName: [
             "sly1",
             "sly2"
          ])

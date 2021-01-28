@@ -26,6 +26,9 @@
 		3C6D10A425A30ED600674774 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C6D10A225A30ED600674774 /* LaunchScreen.storyboard */; };
 		3C6D10B025A3592D00674774 /* LoginFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6D10AF25A3592D00674774 /* LoginFormController.swift */; };
 		3C7DD54725BAC4CC00197351 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DD54625BAC4CC00197351 /* FriendViewController.swift */; };
+		3C923A4F25C2AEC4007766E8 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C923A4E25C2AEC4007766E8 /* TestView.swift */; };
+		3C923A5225C2EC1A007766E8 /* TestControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C923A5125C2EC1A007766E8 /* TestControll.swift */; };
+		3CB9005E25C034D400F5DA25 /* ButtonForDislike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB9005D25C034D400F5DA25 /* ButtonForDislike.swift */; };
 		3CC901D125B0A35D00D0AA56 /* FullScreenPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC901D025B0A35D00D0AA56 /* FullScreenPhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,9 @@
 		3C6D10A525A30ED600674774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C6D10AF25A3592D00674774 /* LoginFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormController.swift; sourceTree = "<group>"; };
 		3C7DD54625BAC4CC00197351 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		3C923A4E25C2AEC4007766E8 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		3C923A5125C2EC1A007766E8 /* TestControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestControll.swift; sourceTree = "<group>"; };
+		3CB9005D25C034D400F5DA25 /* ButtonForDislike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonForDislike.swift; sourceTree = "<group>"; };
 		3CC901D025B0A35D00D0AA56 /* FullScreenPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				3C6B61BB25A9BD0400261222 /* model */,
+				3CB9005C25C034A200F5DA25 /* controlls */,
 				3C69DD6C25BC952E00A2A083 /* views */,
 				3C6B61C625AA166F00261222 /* customCell */,
 				3C6B61AA25A9B9A300261222 /* availableGroups */,
@@ -169,8 +176,18 @@
 				3C6D10A025A30ED600674774 /* Assets.xcassets */,
 				3C6D10A225A30ED600674774 /* LaunchScreen.storyboard */,
 				3C6D10A525A30ED600674774 /* Info.plist */,
+				3C923A4E25C2AEC4007766E8 /* TestView.swift */,
+				3C923A5125C2EC1A007766E8 /* TestControll.swift */,
 			);
 			path = VK;
+			sourceTree = "<group>";
+		};
+		3CB9005C25C034A200F5DA25 /* controlls */ = {
+			isa = PBXGroup;
+			children = (
+				3CB9005D25C034D400F5DA25 /* ButtonForDislike.swift */,
+			);
+			path = controlls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,12 +261,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C923A5225C2EC1A007766E8 /* TestControll.swift in Sources */,
 				3C6B61A725A9B7BB00261222 /* GroupsController.swift in Sources */,
 				3C6D10B025A3592D00674774 /* LoginFormController.swift in Sources */,
 				3C6B61A025A9B76700261222 /* FriendsCell.swift in Sources */,
 				3C6B61A425A9B79C00261222 /* GroupsCell.swift in Sources */,
 				3C69DD6E25BC955500A2A083 /* ViewForImage.swift in Sources */,
 				3CC901D125B0A35D00D0AA56 /* FullScreenPhotoViewController.swift in Sources */,
+				3C923A4F25C2AEC4007766E8 /* TestView.swift in Sources */,
+				3CB9005E25C034D400F5DA25 /* ButtonForDislike.swift in Sources */,
 				3C6B61C125A9BD3B00261222 /* Group.swift in Sources */,
 				3C6D109825A30ED500674774 /* AppDelegate.swift in Sources */,
 				3C1C6D4125AE054B00E73FF4 /* PhotoFriendController.swift in Sources */,

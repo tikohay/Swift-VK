@@ -9,6 +9,7 @@ import UIKit
 
 class FriendsCell: UITableViewCell {
 
+    @IBOutlet var friendContentView: UIView?
     @IBOutlet weak var starIconImage: UIImageView?
     @IBOutlet weak var friendImage: UIImageView? {
         didSet {
@@ -34,7 +35,7 @@ class FriendsCell: UITableViewCell {
     
     func set(user: User) {
         self.friendNameLabel?.text = user.firstName + " " + user.lastName
-        self.friendImage?.image = UIImage(named: user.avatar)
+        self.friendImage?.image = UIImage(named: user.avatarName)
         
         if (user.isBestFriend) {
             self.starIconImage?.isHidden = false
