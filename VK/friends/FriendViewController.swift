@@ -10,30 +10,51 @@ import UIKit
 class FriendViewController: UIViewController {
     
     var usersDict: [Character: [User]] = [:]
+    var usersFirstLetters: [Character] = []
     
-    @IBOutlet weak var friendsTableView: UITableView!
-    @IBOutlet weak var sectionIndexTitlesView: SectionIndexTitlesControll!
+    var usersDuplicate: [User] = [] {
+        didSet {
+            createUsersDict()
+            usersFirstLetters = usersDict.keys.sorted()
+        }
+    }
+    
+    @IBOutlet weak var friendSearchBar: UISearchBar?
+    @IBOutlet weak var friendsTableView: UITableView?
+    @IBOutlet weak var sectionIndexTitlesView: SectionIndexTitlesControll?
+    
+    func changeSearchBarState() {
+        friendSearchBar?.placeholder = "Search:"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        friendsTableView.showsVerticalScrollIndicator = false
         
-        sectionIndexTitlesView.addTarget(self, action: #selector(sectionLetterChanged), for: .valueChanged)
+        changeSearchBarState()
         
-        createUsersDict()
+        friendsTableView?.showsVerticalScrollIndicator = false
+        
+        usersDuplicate = users
+        
+        sectionIndexTitlesView?.addTarget(self, action: #selector(sectionLetterChanged), for: .valueChanged)
+        friendsTableView?.register(UINib(nibName: "HeaderXib", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
+        
+        friendSearchBar?.delegate = self
     }
     
     @objc func sectionLetterChanged() {
         
-        guard let letter = sectionIndexTitlesView.selectedLetter else { return }
+        guard let letter = sectionIndexTitlesView?.selectedLetter else { return }
         guard let letterIndex = usersFirstLetters.firstIndex(of: letter) else { return }
         
-        friendsTableView.scrollToRow(at: IndexPath(row: 0, section: letterIndex), at: .top, animated: true)
+        friendsTableView?.scrollToRow(at: IndexPath(row: 0, section: letterIndex), at: .top, animated: true)
         
     }
     
     private func createUsersDict() {
-        for user in users {
+        usersDict = [:]
+        
+        for user in usersDuplicate {
             guard let firstLetter = user.firstName.first else { continue }
             
             if var userValues = usersDict[firstLetter] {
@@ -59,7 +80,7 @@ extension FriendViewController: UITableViewDataSource {
     enum Cells {
         static let friend = "friendsCell"
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return usersFirstLetters.count
     }
@@ -74,8 +95,15 @@ extension FriendViewController: UITableViewDataSource {
         return 80
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return String(usersFirstLetters[section])
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return String(usersFirstLetters[section])
+//    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Header") as! HeaderView
+        header.headerLabel?.text = String(usersFirstLetters[section])
+        
+        return header
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -127,7 +155,7 @@ extension FriendViewController: UITableViewDataSource {
             }
             self.usersDict[letter] = usersArray
             
-            self.friendsTableView.reloadData()
+            self.friendsTableView?.reloadData()
             completion(true)
         }
 
@@ -142,10 +170,32 @@ extension FriendViewController: UITableViewDataSource {
     }
     
     private func getUserFromDict(_ indexPath: IndexPath) -> User {
+        
         let letter = usersFirstLetters[indexPath[0]]
         let usersArray = usersDict[letter]
         let user = usersArray![indexPath[1]]
         
         return user
+    }
+}
+
+extension FriendViewController: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        usersDuplicate = users
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText.isEmpty {
+            sectionIndexTitlesView?.isHidden = false
+            usersDuplicate = users
+        } else {
+            sectionIndexTitlesView?.isHidden = true
+            usersDuplicate = users.filter({ (user) -> Bool in
+                return user.firstName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            })
+        }
+        friendsTableView?.reloadData()
     }
 }

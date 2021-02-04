@@ -29,8 +29,9 @@ class SectionIndexTitlesControll: UIControl {
     }
     
     private func setupView() {
-        backgroundColor = .systemBackground
         
+        backgroundColor = .clear
+
         for letter in usersFirstLetters {
             let label = UILabel()
             

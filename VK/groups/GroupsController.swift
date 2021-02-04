@@ -12,8 +12,15 @@ class GroupsController: UITableViewController {
     enum Cells {
         static let group = "groupsCell"
     }
-
-    var groups: [Group] = []
+    
+    @IBOutlet weak var groupsSearchBar: UISearchBar?
+    
+    var groups: [Group] = [] {
+        didSet {
+            groupsDuplicate = groups
+        }
+    }
+    var groupsDuplicate: [Group] = []
 
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         if segue.identifier == "addGroup" {
@@ -30,8 +37,18 @@ class GroupsController: UITableViewController {
         }
     }
 
+    func changeSearchBarState() {
+        groupsSearchBar?.placeholder = "Search:"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        changeSearchBarState()
+        
+        groupsSearchBar?.delegate = self
+        
+        groupsDuplicate = groups
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,7 +56,7 @@ class GroupsController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return groupsDuplicate.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -50,7 +67,7 @@ class GroupsController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.group, for: indexPath)
         guard let groupCell = cell  as? GroupsCell else { return cell }
 
-        let group = groups[indexPath.row]
+        let group = groupsDuplicate[indexPath.row]
 
         groupCell.set(group: group)
 
@@ -63,31 +80,19 @@ class GroupsController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+}
 
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+extension GroupsController: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        groupsDuplicate = groups
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        groupsDuplicate = searchText.isEmpty ? groups : groups.filter({ (group) -> Bool in
+            return group.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        })
+        tableView.reloadData()
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
