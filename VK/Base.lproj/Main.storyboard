@@ -82,9 +82,18 @@
                                                     <action selector="onHidePasswordButtonClick:" destination="Q7L-Z6-Jfx" eventType="touchUpInside" id="gT7-5M-1Xp"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pl5-Ne-apI">
+                                                <rect key="frame" x="20" y="343" width="27" height="27"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="27" id="JkW-Fm-SxA"/>
+                                                    <constraint firstAttribute="width" secondItem="Pl5-Ne-apI" secondAttribute="height" id="y1c-Br-OfD"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="XCl-Cx-Q1Q" firstAttribute="leading" secondItem="anl-Lr-MzK" secondAttribute="leading" id="7YG-9s-LKw"/>
+                                            <constraint firstItem="Pl5-Ne-apI" firstAttribute="top" secondItem="wca-Zn-HDd" secondAttribute="bottom" constant="10" id="Ahd-8D-xDK"/>
                                             <constraint firstItem="oVa-uY-8NO" firstAttribute="trailing" secondItem="wca-Zn-HDd" secondAttribute="trailing" id="AqT-3g-JZe"/>
                                             <constraint firstItem="XCl-Cx-Q1Q" firstAttribute="top" secondItem="anl-Lr-MzK" secondAttribute="bottom" constant="50" id="Bou-wD-OLU"/>
                                             <constraint firstAttribute="bottom" secondItem="eHi-1g-Tfn" secondAttribute="bottom" constant="20" id="CP4-LA-RGV"/>
@@ -92,6 +101,7 @@
                                             <constraint firstItem="eHi-1g-Tfn" firstAttribute="centerX" secondItem="XCl-Cx-Q1Q" secondAttribute="centerX" id="Ktl-Na-18a"/>
                                             <constraint firstItem="E2M-6P-VNm" firstAttribute="top" secondItem="W7C-Qd-Ekt" secondAttribute="top" constant="99" id="Sh5-Ki-lUu"/>
                                             <constraint firstItem="anl-Lr-MzK" firstAttribute="leading" secondItem="pnr-lO-iMb" secondAttribute="leading" constant="20" id="YFH-EF-VQm"/>
+                                            <constraint firstItem="Pl5-Ne-apI" firstAttribute="leading" secondItem="wca-Zn-HDd" secondAttribute="leading" id="Zge-WW-pjV"/>
                                             <constraint firstItem="pnr-lO-iMb" firstAttribute="trailing" secondItem="anl-Lr-MzK" secondAttribute="trailing" constant="20" id="af4-IK-9z2"/>
                                             <constraint firstItem="eHi-1g-Tfn" firstAttribute="top" secondItem="XCl-Cx-Q1Q" secondAttribute="bottom" constant="40" id="dvb-WH-soi"/>
                                             <constraint firstItem="anl-Lr-MzK" firstAttribute="top" secondItem="E2M-6P-VNm" secondAttribute="bottom" constant="85" id="hxZ-U4-QYc"/>
@@ -119,6 +129,7 @@
                     </view>
                     <connections>
                         <outlet property="hidePasswordButton" destination="oVa-uY-8NO" id="Rnc-hf-L6L"/>
+                        <outlet property="loadingView" destination="Pl5-Ne-apI" id="kww-nR-fen"/>
                         <outlet property="loginButton" destination="XCl-Cx-Q1Q" id="vkk-62-PeL"/>
                         <outlet property="loginVKTextField" destination="RJW-R0-hQp" id="sP9-xI-8Hj"/>
                         <outlet property="logoVKImage" destination="E2M-6P-VNm" id="APV-2i-mef"/>
@@ -129,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mAQ-ku-4ck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2066.3551401869158" y="-263.06695464362855"/>
+            <point key="canvasLocation" x="2066.25" y="-263.75"/>
         </scene>
         <!--friends-->
         <scene sceneID="lYx-3A-AeP">
@@ -278,7 +289,7 @@
                                         </constraints>
                                     </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LQI-Op-hzF">
-                                        <rect key="frame" x="0.0" y="436" width="428" height="319"/>
+                                        <rect key="frame" x="0.0" y="436" width="428" height="279"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PpH-XO-j5c">
                                             <size key="itemSize" width="128" height="147"/>

@@ -16,6 +16,11 @@ class LoginFormController: UIViewController {
     @IBOutlet weak var passwordVKTextField: UITextField?
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var hidePasswordButton: UIButton?
+    @IBOutlet weak var loadingView: UIView? {
+        didSet {
+            loadingView?.layer.opacity = 0
+        }
+    }
     
     private var isPasswordHidden = true
     private var keyboardShown = false
@@ -23,6 +28,9 @@ class LoginFormController: UIViewController {
     @IBAction func tappedLogin(_ sender: UIButton) {
         guard let loginButton = loginButton else { return }
         animateView(loginButton)
+        
+        let animOpacity1 = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animOpacity1.toValue = 1
     }
     
     @IBAction func onHidePasswordButtonClick(_ sender: UIButton) {
@@ -175,5 +183,12 @@ class LoginFormController: UIViewController {
     
     @objc private func hideKeyboard() {
         self.scrollView?.endEditing(true)
+    }
+}
+
+extension LoginFormController: CAAnimationDelegate {
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        <#code#>
     }
 }
