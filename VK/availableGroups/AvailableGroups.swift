@@ -15,6 +15,7 @@ class AvailableGroups: UITableViewController {
         static let availableGroup = "availableGroupCell"
     }
     
+    @IBOutlet var availableGroupsTableView: UITableView?
     @IBOutlet weak var availableGroupSearchBar: UISearchBar!
     
     let availableGroups = [
@@ -35,6 +36,10 @@ class AvailableGroups: UITableViewController {
         availableGroupDuplicate = availableGroups
         
         changeSearchBarState()
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        gesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(gesture)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,6 +64,10 @@ class AvailableGroups: UITableViewController {
         availableGroupCell.set(availableGroup: group)
 
         return availableGroupCell
+    }
+    
+    @objc func endEditing() {
+        view.endEditing(true)
     }
 }
 

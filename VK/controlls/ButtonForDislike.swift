@@ -49,11 +49,19 @@ class ButtonForDislike: UIControl {
         isDislike.toggle()
         if isDislike {
             dislikeButton.setImage(handThumbsupFillImage, for: .normal)
-            countOfDislikeLabel.text = "\(countOfDislike + 1)"
+            UIView.transition(with: countOfDislikeLabel,
+                              duration: 0.3,
+                              options: .transitionFlipFromBottom) {
+                self.countOfDislikeLabel.text = "\(self.countOfDislike + 1)"
+            }
             countOfDislike += 1
         } else {
             dislikeButton.setImage(handThumbsdownImage, for: .normal)
-            countOfDislikeLabel.text = ""
+            UIView.transition(with: countOfDislikeLabel,
+                              duration: 0.5,
+                              options: .transitionCurlUp) {
+                self.countOfDislikeLabel.text = ""
+            }
             countOfDislike -= 1
         }
     }

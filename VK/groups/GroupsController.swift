@@ -13,6 +13,8 @@ class GroupsController: UITableViewController {
         static let group = "groupsCell"
     }
     
+    
+    @IBOutlet var groupsTableView: UITableView?
     @IBOutlet weak var groupsSearchBar: UISearchBar?
     
     var groups: [Group] = [] {
@@ -49,6 +51,11 @@ class GroupsController: UITableViewController {
         groupsSearchBar?.delegate = self
         
         groupsDuplicate = groups
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        gesture.cancelsTouchesInView = false
+        
+        tableView.addGestureRecognizer(gesture)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -79,6 +86,10 @@ class GroupsController: UITableViewController {
             groups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    @objc func endEditing() {
+        tableView.endEditing(true)
     }
 }
 

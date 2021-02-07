@@ -40,6 +40,11 @@ class FriendViewController: UIViewController {
         friendsTableView?.register(UINib(nibName: "HeaderXib", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
         
         friendSearchBar?.delegate = self
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        gesture.cancelsTouchesInView = false
+        
+        self.view.addGestureRecognizer(gesture)
     }
     
     @objc func sectionLetterChanged() {
@@ -48,7 +53,10 @@ class FriendViewController: UIViewController {
         guard let letterIndex = usersFirstLetters.firstIndex(of: letter) else { return }
         
         friendsTableView?.scrollToRow(at: IndexPath(row: 0, section: letterIndex), at: .top, animated: true)
-        
+    }
+    
+    @objc func endEditing() {
+        view.endEditing(true)
     }
     
     private func createUsersDict() {

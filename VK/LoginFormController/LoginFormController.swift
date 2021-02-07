@@ -18,7 +18,10 @@ class LoginFormController: UIViewController {
     @IBOutlet weak var hidePasswordButton: UIButton?
     @IBOutlet weak var loadingView: UIView? {
         didSet {
+            loadingView?.layer.cornerRadius = (loadingView?.frame.width)! / 2
             loadingView?.layer.opacity = 0
+            loadingView?.layer.borderWidth = 1
+            loadingView?.layer.borderColor = UIColor.white.cgColor
         }
     }
     
@@ -29,8 +32,14 @@ class LoginFormController: UIViewController {
         guard let loginButton = loginButton else { return }
         animateView(loginButton)
         
-        let animOpacity1 = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
-        animOpacity1.toValue = 1
+        let group = CAAnimationGroup()
+        group.animations = changeOpacityAndSlideRightAnimation()
+        group.duration = 3
+        group.setValue("loadingCircles", forKey: "loginFormAnimation")
+        group.delegate = self
+    
+        loadingView?.layer.add(group, forKey: nil)
+        group.isRemovedOnCompletion = true
     }
     
     @IBAction func onHidePasswordButtonClick(_ sender: UIButton) {
@@ -53,11 +62,23 @@ class LoginFormController: UIViewController {
         
     }
     
+    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+        if shouldPerformSegue(withIdentifier: identifier, sender: sender) {
+            super.performSegue(withIdentifier: identifier, sender: sender)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         prepareElementsToView()
         addTapGestureRecognizer()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        logoVKImage?.layer.removeAllAnimations()
+        loadingView?.layer.removeAllAnimations()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +94,7 @@ class LoginFormController: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
         let checkResult = checkUserData()
         
         if !checkResult {
@@ -145,11 +167,11 @@ class LoginFormController: UIViewController {
     }
     
     private func checkUserData() -> Bool {
-        return true
-//        guard let login = loginVKTextField?.text, let password = passwordVKTextField?.text else {
-//            return false
-//        }
-//        return login == "admin" && password == "1234567"
+        
+        guard let login = loginVKTextField?.text, let password = passwordVKTextField?.text else {
+            return false
+        }
+        return login == "admin" && password == "1234567"
     }
     
     private func showLoginError() {
@@ -184,11 +206,109 @@ class LoginFormController: UIViewController {
     @objc private func hideKeyboard() {
         self.scrollView?.endEditing(true)
     }
+    
+    func changeOpacityAndSlideRightAnimation() -> [CABasicAnimation] {
+        
+        let animOpacity1 = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animOpacity1.toValue = 1
+        animOpacity1.duration = 0.2
+        
+        let animOpacity2 = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animOpacity2.fromValue = 1
+        animOpacity2.toValue = 0
+        animOpacity2.duration = 0.2
+        animOpacity2.beginTime = 0.2
+        
+        let animPosition1 = CABasicAnimation(keyPath: "position.x")
+        animPosition1.toValue = self.view.frame.width / 2
+        animPosition1.duration = 0.2
+        animPosition1.beginTime = 0.4
+        animPosition1.fillMode = .forwards
+        
+        let animOpacity3 = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animOpacity3.toValue = 1
+        animOpacity3.duration = 0.2
+        animOpacity3.beginTime = 0.6
+        
+        let animOpacity4 = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animOpacity4.fromValue = 1
+        animOpacity4.toValue = 0
+        animOpacity4.duration = 0.2
+        animOpacity4.beginTime = 0.8
+        
+        let animPosition2 = CABasicAnimation(keyPath: "position.x")
+        animPosition2.toValue = logoVKImage!.layer.position.x + (logoVKImage!.frame.width / 2)
+        animPosition2.duration = 0.2
+        animPosition2.beginTime = 1
+        animPosition2.fillMode = .forwards
+        
+        let animOpacity5 = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animOpacity5.toValue = 1
+        animOpacity5.duration = 0.4
+        animOpacity5.beginTime = 1.2
+        
+        let animOpacity6 = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animOpacity6.fromValue = 1
+        animOpacity6.toValue = 0
+        animOpacity6.duration = 0.4
+        animOpacity6.beginTime = 1.6
+        
+        return [animOpacity1, animOpacity2, animPosition1, animOpacity3, animOpacity4, animPosition2, animOpacity5, animOpacity6]
+    }
+    
+    func slideDownAndZoomIn() -> [CABasicAnimation] {
+        
+        let springAnimPosition = CASpringAnimation(keyPath: "position.y")
+        springAnimPosition.toValue = self.logoVKImage!.layer.position.y + 200
+        springAnimPosition.stiffness = 200
+        springAnimPosition.mass = 1
+        springAnimPosition.duration = 2
+        springAnimPosition.fillMode = .forwards
+        
+        let animScale = CABasicAnimation(keyPath: "transform.scale")
+        animScale.fromValue = 0
+        animScale.toValue = 200
+        animScale.duration = 3
+        animScale.beginTime = 2
+        animScale.fillMode = .forwards
+        
+        let animOpacity = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animOpacity.toValue = 0
+        animOpacity.duration = 3
+        animOpacity.beginTime = 2
+        
+        return [springAnimPosition, animScale, animOpacity]
+    }
 }
 
 extension LoginFormController: CAAnimationDelegate {
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        <#code#>
+        
+        if let animationID = anim.value(forKey: "loginFormAnimation") {
+            if animationID as! NSString == "loadingCircles" {
+                checkUserDataForMakeAnimation()
+            }
+            
+            if animationID as! NSString == "slideDownAndZoomIn" {
+                 performSegue(withIdentifier: "toFriendsVC", sender: nil)
+            }
+        }
+    }
+    
+    func checkUserDataForMakeAnimation() {
+        if checkUserData() {
+            let group = CAAnimationGroup()
+            
+            group.animations = slideDownAndZoomIn()
+            group.duration = 3
+            group.setValue("slideDownAndZoomIn", forKey: "loginFormAnimation")
+            group.delegate = self
+            
+            logoVKImage?.layer.add(group, forKey: nil)
+            group.isRemovedOnCompletion = true
+        } else {
+            showLoginError()
+        }
     }
 }

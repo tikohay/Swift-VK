@@ -11,6 +11,11 @@ class PhotoOfFriendCell: UICollectionViewCell {
     
     @IBOutlet var dislikeButtonSubview: ButtonForDislike?
     @IBOutlet weak var friendImage: UIImageView?
+    @IBOutlet weak var likeCountLabel: UILabel? {
+        didSet {
+            likeCountLabel?.textColor = .red
+        }
+    }
     @IBOutlet weak var likeButton: UIButton? {
         didSet {
             likeButton?.tintColor = #colorLiteral(red: 0, green: 0.4524545074, blue: 0.9992441535, alpha: 1)
@@ -38,10 +43,18 @@ class PhotoOfFriendCell: UICollectionViewCell {
     
     private func changeNumOfLikes() {
         if !isLike {
-            likeButton?.setTitle(" \(numOfLike + 1)", for: .normal)
             numOfLike += 1
+            UIView.transition(with: likeCountLabel!,
+                              duration: 0.3,
+                              options: .transitionFlipFromBottom) {
+                self.likeCountLabel?.text = "\(self.numOfLike)"
+            }
         } else {
-            likeButton?.setTitle(String(numOfLike - 1), for: .normal)
+            UIView.transition(with: likeCountLabel!,
+                              duration: 0.5,
+                              options: .transitionCurlUp) {
+                self.likeCountLabel!.text = ""
+            }
             numOfLike -= 1
         }
         isLike.toggle()
@@ -49,15 +62,15 @@ class PhotoOfFriendCell: UICollectionViewCell {
     
     private func changeLikeState() {
         if numOfLike > 0 {
-            likeButton?.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            likeButton?.tintColor = .red
-            likeButton?.setTitleColor(.red, for: .normal)
-            likeButton?.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+            self.likeButton?.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            self.likeButton?.tintColor = .red
+            self.likeButton?.setTitleColor(.red, for: .normal)
+            self.likeButton?.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+            
         } else {
-            likeButton?.setImage(UIImage(systemName: "heart"), for: .normal)
-            likeButton?.tintColor = #colorLiteral(red: 0, green: 0.4524545074, blue: 0.9992441535, alpha: 1)
-            likeButton?.setTitle("", for: .normal)
-        }
+            self.likeButton?.setImage(UIImage(systemName: "heart"), for: .normal)
+            self.likeButton?.tintColor = #colorLiteral(red: 0, green: 0.4524545074, blue: 0.9992441535, alpha: 1)
+            }
     }
     
     func addDoubleTapForLike() {
