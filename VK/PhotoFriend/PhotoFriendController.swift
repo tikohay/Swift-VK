@@ -31,15 +31,14 @@ class PhotoFriendController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pickPhotoSegue" {
-            let photoVC = segue.destination as! FullScreenPhotoViewController
-            photoVC.imageName = sender as? String
+        if segue.identifier == "toFullScreenVC" {
+            let photoVC = segue.destination as! FullScreenScrollPhotoViewController
+            photoVC.user = sender as? User
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let image = user?.imagesName[indexPath.item]
-        performSegue(withIdentifier: "pickPhotoSegue", sender: image)
+        performSegue(withIdentifier: "toFullScreenVC", sender: user)
     }
 }
 
