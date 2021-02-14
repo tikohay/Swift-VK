@@ -626,7 +626,7 @@
         <!--friends-->
         <scene sceneID="JEF-lE-v9W">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="FAB-Bx-Y2M" customClass="CustomNavigationController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="FAB-Bx-Y2M" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="friends" image="person.2.fill" catalog="system" id="zSs-db-FeH">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
@@ -828,7 +828,7 @@
         <!--my groups-->
         <scene sceneID="92c-JW-bSG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="0YQ-U2-unc" customClass="CustomNavigationController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="0YQ-U2-unc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="my groups" image="rectangle.grid.1x2.fill" catalog="system" id="Gp5-rq-Po3">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
