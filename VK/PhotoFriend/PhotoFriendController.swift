@@ -32,7 +32,7 @@ class PhotoFriendController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toFullScreenVC" {
-            let photoVC = segue.destination as! FullScreenScrollPhotoViewController
+            let photoVC = segue.destination as! FullScreenViewController
             photoVC.user = sender as? User
         }
     }

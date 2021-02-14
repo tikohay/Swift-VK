@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wf3-gK-n1I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q7L-Z6-Jfx">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -401,7 +401,7 @@
                         <outlet property="friendAvatarImage" destination="c3H-Lm-ak4" id="T9Z-gn-gcr"/>
                         <outlet property="friendNameLabel" destination="yym-CQ-uuX" id="9XH-Yi-2xe"/>
                         <outlet property="photoFriendContentView" destination="LQI-Op-hzF" id="JQe-Oc-exn"/>
-                        <segue destination="Ued-Gj-xbF" kind="show" identifier="toFullScreenVC" id="0dV-Zv-P8E"/>
+                        <segue destination="hhY-wi-9pz" kind="show" identifier="toFullScreenVC" id="X5T-LM-iDS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="03F-1U-s1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -409,32 +409,35 @@
             </objects>
             <point key="canvasLocation" x="5859.8130841121492" y="-599.35205183585322"/>
         </scene>
-        <!--Full Screen Scroll Photo View Controller-->
-        <scene sceneID="1JF-em-hzg">
+        <!--Full Screen View Controller-->
+        <scene sceneID="TJz-Dz-KcE">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Ued-Gj-xbF" customClass="FullScreenScrollPhotoViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="o6W-4B-SXb">
+                <viewController modalPresentationStyle="fullScreen" id="hhY-wi-9pz" customClass="FullScreenViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ipp-dO-Pi6">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R2P-D7-z8d">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <viewLayoutGuide key="contentLayoutGuide" id="yk3-y7-j9c"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="ock-2f-EBT"/>
-                            </scrollView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vO4-1x-mKU">
+                                <rect key="frame" x="0.0" y="108" width="428" height="681"/>
+                            </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="JDa-xg-7G6"/>
+                        <viewLayoutGuide key="safeArea" id="guj-2y-6F5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="guj-2y-6F5" firstAttribute="bottom" secondItem="vO4-1x-mKU" secondAttribute="bottom" id="Hec-Ma-jGL"/>
+                            <constraint firstItem="guj-2y-6F5" firstAttribute="trailing" secondItem="vO4-1x-mKU" secondAttribute="trailing" id="aFg-La-dug"/>
+                            <constraint firstItem="vO4-1x-mKU" firstAttribute="top" secondItem="guj-2y-6F5" secondAttribute="top" id="qQJ-bQ-AxP"/>
+                            <constraint firstItem="vO4-1x-mKU" firstAttribute="leading" secondItem="guj-2y-6F5" secondAttribute="leading" id="rPf-Tx-DE1"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="I9e-YX-4ej"/>
+                    <navigationItem key="navigationItem" id="JhP-k8-PNR"/>
                     <connections>
-                        <outlet property="scrollView" destination="R2P-D7-z8d" id="iiw-cF-Qus"/>
+                        <outlet property="friendImage" destination="vO4-1x-mKU" id="Umy-jT-tyO"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aAh-qO-agd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d22-pf-Cw3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6677" y="-599"/>
+            <point key="canvasLocation" x="6628" y="-599"/>
         </scene>
         <!--my groups-->
         <scene sceneID="wmm-lJ-MWq">

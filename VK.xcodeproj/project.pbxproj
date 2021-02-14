@@ -37,6 +37,7 @@
 		3CB7DE1925D933F400413EA4 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE1825D933F400413EA4 /* CustomNavigationController.swift */; };
 		3CB7DE1C25D9579100413EA4 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE1B25D9579100413EA4 /* CustomInteractiveTransition.swift */; };
 		3CB7DE1F25D9671400413EA4 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE1E25D9671400413EA4 /* CustomTextField.swift */; };
+		3CB7DE2325D96D4000413EA4 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE2225D96D4000413EA4 /* FullScreenViewController.swift */; };
 		3CB9005E25C034D400F5DA25 /* ButtonForDislike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB9005D25C034D400F5DA25 /* ButtonForDislike.swift */; };
 		3CBADBDF25CBD39C00F14909 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBADBDE25CBD39C00F14909 /* News.swift */; };
 		3CBADBE225CBDE7600F14909 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBADBE125CBDE7600F14909 /* NewsTableViewCell.swift */; };
@@ -83,6 +84,7 @@
 		3CB7DE1825D933F400413EA4 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		3CB7DE1B25D9579100413EA4 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 		3CB7DE1E25D9671400413EA4 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		3CB7DE2225D96D4000413EA4 /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 		3CB9005D25C034D400F5DA25 /* ButtonForDislike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonForDislike.swift; sourceTree = "<group>"; };
 		3CBADBDE25CBD39C00F14909 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		3CBADBE125CBDE7600F14909 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -112,8 +114,7 @@
 			children = (
 				3C1C6D4025AE054B00E73FF4 /* PhotoFriendController.swift */,
 				3C1C6D4425AE058D00E73FF4 /* PhotoOfFriendCell.swift */,
-				3C8EA6AD25D520FF00FD466D /* FullScreenScrollPhotoViewController.swift */,
-				3C8EA6B025D5294100FD466D /* AnimationView.swift */,
+				3CB7DE2225D96D4000413EA4 /* FullScreenViewController.swift */,
 			);
 			path = PhotoFriend;
 			sourceTree = "<group>";
@@ -226,6 +227,8 @@
 		3C8EA6B725D5906C00FD466D /* forTest */ = {
 			isa = PBXGroup;
 			children = (
+				3C8EA6B025D5294100FD466D /* AnimationView.swift */,
+				3C8EA6AD25D520FF00FD466D /* FullScreenScrollPhotoViewController.swift */,
 				3CC901D025B0A35D00D0AA56 /* FullScreenPhotoViewController.swift */,
 				3C923A4E25C2AEC4007766E8 /* TestView.swift */,
 				3C923A5125C2EC1A007766E8 /* TestControll.swift */,
@@ -372,6 +375,7 @@
 				3C1C6D4125AE054B00E73FF4 /* PhotoFriendController.swift in Sources */,
 				3CBADBE525CBF8B200F14909 /* CommentsViewController.swift in Sources */,
 				3C1C6D4525AE058D00E73FF4 /* PhotoOfFriendCell.swift in Sources */,
+				3CB7DE2325D96D4000413EA4 /* FullScreenViewController.swift in Sources */,
 				3CFA628625CAFCEB008C74C0 /* NewsViewController.swift in Sources */,
 				3C1A049B25C6AB4600815825 /* SectionIndexTitlesControll.swift in Sources */,
 				3C8EA6B125D5294100FD466D /* AnimationView.swift in Sources */,
