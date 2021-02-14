@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q7L-Z6-Jfx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wf3-gK-n1I">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -27,7 +27,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="anl-Lr-MzK">
                                                 <rect key="frame" x="20" y="259" width="388" height="74"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email или телефон " textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RJW-R0-hQp">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email или телефон " textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RJW-R0-hQp" customClass="CustomTextField" customModule="VK" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="388" height="37"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -36,7 +36,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wca-Zn-HDd">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wca-Zn-HDd" customClass="CustomTextField" customModule="VK" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="37" width="388" height="37"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -145,7 +145,7 @@
         <!--friends-->
         <scene sceneID="lYx-3A-AeP">
             <objects>
-                <viewController id="A2v-TC-4LH" customClass="FriendViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="A2v-TC-4LH" customClass="FriendViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HZv-0y-TZh">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -401,7 +401,7 @@
                         <outlet property="friendAvatarImage" destination="c3H-Lm-ak4" id="T9Z-gn-gcr"/>
                         <outlet property="friendNameLabel" destination="yym-CQ-uuX" id="9XH-Yi-2xe"/>
                         <outlet property="photoFriendContentView" destination="LQI-Op-hzF" id="JQe-Oc-exn"/>
-                        <segue destination="Ued-Gj-xbF" kind="presentation" identifier="toFullScreenVC" id="0dV-Zv-P8E"/>
+                        <segue destination="Ued-Gj-xbF" kind="show" identifier="toFullScreenVC" id="0dV-Zv-P8E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="03F-1U-s1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -412,7 +412,7 @@
         <!--Full Screen Scroll Photo View Controller-->
         <scene sceneID="1JF-em-hzg">
             <objects>
-                <viewController modalPresentationStyle="pageSheet" id="Ued-Gj-xbF" customClass="FullScreenScrollPhotoViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Ued-Gj-xbF" customClass="FullScreenScrollPhotoViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o6W-4B-SXb">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -623,7 +623,7 @@
         <!--friends-->
         <scene sceneID="JEF-lE-v9W">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="FAB-Bx-Y2M" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="FAB-Bx-Y2M" customClass="CustomNavigationController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="friends" image="person.2.fill" catalog="system" id="zSs-db-FeH">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
@@ -825,7 +825,7 @@
         <!--my groups-->
         <scene sceneID="92c-JW-bSG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="0YQ-U2-unc" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="0YQ-U2-unc" customClass="CustomNavigationController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="my groups" image="rectangle.grid.1x2.fill" catalog="system" id="Gp5-rq-Po3">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>

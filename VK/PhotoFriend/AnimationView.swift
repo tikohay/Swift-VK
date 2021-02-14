@@ -8,6 +8,7 @@ class AnimationView: UIView {
         imageView.backgroundColor = .black
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+       
         return imageView
     }()
     

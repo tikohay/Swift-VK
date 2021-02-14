@@ -21,7 +21,7 @@ class FullScreenScrollPhotoViewController: UIViewController {
         
         setupScrollView()
     }
-
+    
     private func setupScrollView() {
         
         scrollView.contentSize.width = self.scrollView.frame.width * CGFloat(images!.count)

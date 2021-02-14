@@ -32,6 +32,11 @@
 		3C923A4F25C2AEC4007766E8 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C923A4E25C2AEC4007766E8 /* TestView.swift */; };
 		3C923A5225C2EC1A007766E8 /* TestControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C923A5125C2EC1A007766E8 /* TestControll.swift */; };
 		3CAFBEB225C44B27003B4124 /* dataForSectionIndexTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAFBEB125C44B27003B4124 /* dataForSectionIndexTitles.swift */; };
+		3CB7DE1225D924E500413EA4 /* CustomPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE1125D924E500413EA4 /* CustomPushAnimator.swift */; };
+		3CB7DE1625D92E2800413EA4 /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE1525D92E2800413EA4 /* CustomPopAnimator.swift */; };
+		3CB7DE1925D933F400413EA4 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE1825D933F400413EA4 /* CustomNavigationController.swift */; };
+		3CB7DE1C25D9579100413EA4 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE1B25D9579100413EA4 /* CustomInteractiveTransition.swift */; };
+		3CB7DE1F25D9671400413EA4 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE1E25D9671400413EA4 /* CustomTextField.swift */; };
 		3CB9005E25C034D400F5DA25 /* ButtonForDislike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB9005D25C034D400F5DA25 /* ButtonForDislike.swift */; };
 		3CBADBDF25CBD39C00F14909 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBADBDE25CBD39C00F14909 /* News.swift */; };
 		3CBADBE225CBDE7600F14909 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBADBE125CBDE7600F14909 /* NewsTableViewCell.swift */; };
@@ -73,6 +78,11 @@
 		3C923A4E25C2AEC4007766E8 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		3C923A5125C2EC1A007766E8 /* TestControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestControll.swift; sourceTree = "<group>"; };
 		3CAFBEB125C44B27003B4124 /* dataForSectionIndexTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataForSectionIndexTitles.swift; sourceTree = "<group>"; };
+		3CB7DE1125D924E500413EA4 /* CustomPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimator.swift; sourceTree = "<group>"; };
+		3CB7DE1525D92E2800413EA4 /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
+		3CB7DE1825D933F400413EA4 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		3CB7DE1B25D9579100413EA4 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
+		3CB7DE1E25D9671400413EA4 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		3CB9005D25C034D400F5DA25 /* ButtonForDislike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonForDislike.swift; sourceTree = "<group>"; };
 		3CBADBDE25CBD39C00F14909 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		3CBADBE125CBDE7600F14909 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -190,6 +200,7 @@
 		3C6D109625A30ED500674774 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				3CB7DE1025D9249F00413EA4 /* customAnimators */,
 				3CAFBEB025C44AE5003B4124 /* sectionIndexTitles */,
 				3C6B61BB25A9BD0400261222 /* model */,
 				3CB9005C25C034A200F5DA25 /* controlls */,
@@ -233,10 +244,22 @@
 			path = sectionIndexTitles;
 			sourceTree = "<group>";
 		};
+		3CB7DE1025D9249F00413EA4 /* customAnimators */ = {
+			isa = PBXGroup;
+			children = (
+				3CB7DE1125D924E500413EA4 /* CustomPushAnimator.swift */,
+				3CB7DE1525D92E2800413EA4 /* CustomPopAnimator.swift */,
+				3CB7DE1825D933F400413EA4 /* CustomNavigationController.swift */,
+				3CB7DE1B25D9579100413EA4 /* CustomInteractiveTransition.swift */,
+			);
+			path = customAnimators;
+			sourceTree = "<group>";
+		};
 		3CB9005C25C034A200F5DA25 /* controlls */ = {
 			isa = PBXGroup;
 			children = (
 				3CB9005D25C034D400F5DA25 /* ButtonForDislike.swift */,
+				3CB7DE1E25D9671400413EA4 /* CustomTextField.swift */,
 			);
 			path = controlls;
 			sourceTree = "<group>";
@@ -326,9 +349,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CB7DE1925D933F400413EA4 /* CustomNavigationController.swift in Sources */,
 				3CFA628C25CB0DA5008C74C0 /* NewsGradientView.swift in Sources */,
 				3C923A5225C2EC1A007766E8 /* TestControll.swift in Sources */,
 				3CFA628225CA8D6B008C74C0 /* GradientView.swift in Sources */,
+				3CB7DE1225D924E500413EA4 /* CustomPushAnimator.swift in Sources */,
 				3C6B61A725A9B7BB00261222 /* GroupsController.swift in Sources */,
 				3C8EA6AE25D520FF00FD466D /* FullScreenScrollPhotoViewController.swift in Sources */,
 				3C6D10B025A3592D00674774 /* LoginFormController.swift in Sources */,
@@ -336,7 +361,9 @@
 				3C6B61A425A9B79C00261222 /* GroupsCell.swift in Sources */,
 				3C69DD6E25BC955500A2A083 /* ViewForImage.swift in Sources */,
 				3CBADBE225CBDE7600F14909 /* NewsTableViewCell.swift in Sources */,
+				3CB7DE1C25D9579100413EA4 /* CustomInteractiveTransition.swift in Sources */,
 				3CC901D125B0A35D00D0AA56 /* FullScreenPhotoViewController.swift in Sources */,
+				3CB7DE1F25D9671400413EA4 /* CustomTextField.swift in Sources */,
 				3CFA627C25CA89DD008C74C0 /* HeaderView.swift in Sources */,
 				3C923A4F25C2AEC4007766E8 /* TestView.swift in Sources */,
 				3CB9005E25C034D400F5DA25 /* ButtonForDislike.swift in Sources */,
@@ -348,6 +375,7 @@
 				3CFA628625CAFCEB008C74C0 /* NewsViewController.swift in Sources */,
 				3C1A049B25C6AB4600815825 /* SectionIndexTitlesControll.swift in Sources */,
 				3C8EA6B125D5294100FD466D /* AnimationView.swift in Sources */,
+				3CB7DE1625D92E2800413EA4 /* CustomPopAnimator.swift in Sources */,
 				3C6B61BD25A9BD2800261222 /* User.swift in Sources */,
 				3C6B61C925AA16D900261222 /* CustomTableViewCell.swift in Sources */,
 				3C7DD54725BAC4CC00197351 /* FriendViewController.swift in Sources */,
