@@ -10,6 +10,7 @@
 		3C1A049B25C6AB4600815825 /* SectionIndexTitlesControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A049A25C6AB4600815825 /* SectionIndexTitlesControll.swift */; };
 		3C1C6D4125AE054B00E73FF4 /* PhotoFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C6D4025AE054B00E73FF4 /* PhotoFriendController.swift */; };
 		3C1C6D4525AE058D00E73FF4 /* PhotoOfFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C6D4425AE058D00E73FF4 /* PhotoOfFriendCell.swift */; };
+		3C448BF625E11FBB00141DBB /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C448BF525E11FBB00141DBB /* Session.swift */; };
 		3C69DD6E25BC955500A2A083 /* ViewForImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C69DD6D25BC955500A2A083 /* ViewForImage.swift */; };
 		3C6B61A025A9B76700261222 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B619F25A9B76700261222 /* FriendsCell.swift */; };
 		3C6B61A425A9B79C00261222 /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B61A325A9B79C00261222 /* GroupsCell.swift */; };
@@ -55,6 +56,7 @@
 		3C1A049A25C6AB4600815825 /* SectionIndexTitlesControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIndexTitlesControll.swift; sourceTree = "<group>"; };
 		3C1C6D4025AE054B00E73FF4 /* PhotoFriendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFriendController.swift; sourceTree = "<group>"; };
 		3C1C6D4425AE058D00E73FF4 /* PhotoOfFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoOfFriendCell.swift; sourceTree = "<group>"; };
+		3C448BF525E11FBB00141DBB /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		3C69DD6D25BC955500A2A083 /* ViewForImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForImage.swift; sourceTree = "<group>"; };
 		3C6B619F25A9B76700261222 /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
 		3C6B61A325A9B79C00261222 /* GroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
@@ -125,6 +127,14 @@
 				3C6D10AF25A3592D00674774 /* LoginFormController.swift */,
 			);
 			path = LoginFormController;
+			sourceTree = "<group>";
+		};
+		3C448BF425E11FB000141DBB /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				3C448BF525E11FBB00141DBB /* Session.swift */,
+			);
+			path = Session;
 			sourceTree = "<group>";
 		};
 		3C69DD6C25BC952E00A2A083 /* Views */ = {
@@ -201,6 +211,7 @@
 		3C6D109625A30ED500674774 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				3C448BF425E11FB000141DBB /* Session */,
 				3CB7DE1025D9249F00413EA4 /* CustomAnimators */,
 				3CAFBEB025C44AE5003B4124 /* SectionIndexTitles */,
 				3C6B61BB25A9BD0400261222 /* Model */,
@@ -380,6 +391,7 @@
 				3C1A049B25C6AB4600815825 /* SectionIndexTitlesControll.swift in Sources */,
 				3C8EA6B125D5294100FD466D /* AnimationView.swift in Sources */,
 				3CB7DE1625D92E2800413EA4 /* CustomPopAnimator.swift in Sources */,
+				3C448BF625E11FBB00141DBB /* Session.swift in Sources */,
 				3C6B61BD25A9BD2800261222 /* User.swift in Sources */,
 				3C6B61C925AA16D900261222 /* CustomTableViewCell.swift in Sources */,
 				3C7DD54725BAC4CC00197351 /* FriendViewController.swift in Sources */,
