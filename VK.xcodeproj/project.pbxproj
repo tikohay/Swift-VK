@@ -127,59 +127,59 @@
 			path = LoginFormController;
 			sourceTree = "<group>";
 		};
-		3C69DD6C25BC952E00A2A083 /* views */ = {
+		3C69DD6C25BC952E00A2A083 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				3C69DD6D25BC955500A2A083 /* ViewForImage.swift */,
 				3CFA628125CA8D6B008C74C0 /* GradientView.swift */,
 			);
-			path = views;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		3C6B619525A9B66D00261222 /* friends */ = {
+		3C6B619525A9B66D00261222 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
 				3C6B619F25A9B76700261222 /* FriendsCell.swift */,
 				3C7DD54625BAC4CC00197351 /* FriendViewController.swift */,
 			);
-			path = friends;
+			path = Friends;
 			sourceTree = "<group>";
 		};
-		3C6B619D25A9B72200261222 /* groups */ = {
+		3C6B619D25A9B72200261222 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
 				3C6B61A325A9B79C00261222 /* GroupsCell.swift */,
 				3C6B61A625A9B7BB00261222 /* GroupsController.swift */,
 			);
-			path = groups;
+			path = Groups;
 			sourceTree = "<group>";
 		};
-		3C6B61AA25A9B9A300261222 /* availableGroups */ = {
+		3C6B61AA25A9B9A300261222 /* AvailableGroups */ = {
 			isa = PBXGroup;
 			children = (
 				3C6B61AF25A9B9EB00261222 /* AvailableGroupsCell.swift */,
 				3C6B61AB25A9B9CC00261222 /* AvailableGroups.swift */,
 			);
-			path = availableGroups;
+			path = AvailableGroups;
 			sourceTree = "<group>";
 		};
-		3C6B61BB25A9BD0400261222 /* model */ = {
+		3C6B61BB25A9BD0400261222 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				3C6B61BC25A9BD2800261222 /* User.swift */,
 				3C6B61C025A9BD3B00261222 /* Group.swift */,
 				3CBADBDE25CBD39C00F14909 /* News.swift */,
 			);
-			path = model;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		3C6B61C625AA166F00261222 /* customCell */ = {
+		3C6B61C625AA166F00261222 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
 				3C6B61C725AA16D900261222 /* CustomTableViewCell.swift */,
 				3C6B61C825AA16D900261222 /* CustomTableViewCell.xib */,
 			);
-			path = customCell;
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		3C6D108B25A30ED500674774 = {
@@ -201,17 +201,17 @@
 		3C6D109625A30ED500674774 /* VK */ = {
 			isa = PBXGroup;
 			children = (
-				3CB7DE1025D9249F00413EA4 /* customAnimators */,
-				3CAFBEB025C44AE5003B4124 /* sectionIndexTitles */,
-				3C6B61BB25A9BD0400261222 /* model */,
-				3CB9005C25C034A200F5DA25 /* controlls */,
-				3C69DD6C25BC952E00A2A083 /* views */,
-				3C6B61C625AA166F00261222 /* customCell */,
+				3CB7DE1025D9249F00413EA4 /* CustomAnimators */,
+				3CAFBEB025C44AE5003B4124 /* SectionIndexTitles */,
+				3C6B61BB25A9BD0400261222 /* Model */,
+				3CB9005C25C034A200F5DA25 /* Controlls */,
+				3C69DD6C25BC952E00A2A083 /* Views */,
+				3C6B61C625AA166F00261222 /* CustomCell */,
 				3CFA628425CAFCB6008C74C0 /* News */,
-				3C6B61AA25A9B9A300261222 /* availableGroups */,
-				3C6B619D25A9B72200261222 /* groups */,
+				3C6B61AA25A9B9A300261222 /* AvailableGroups */,
+				3C6B619D25A9B72200261222 /* Groups */,
 				3C1C6D3E25AE04D700E73FF4 /* PhotoFriend */,
-				3C6B619525A9B66D00261222 /* friends */,
+				3C6B619525A9B66D00261222 /* Friends */,
 				3C324A3125B1ED0C005EED95 /* LoginFormController */,
 				3C6D109D25A30ED500674774 /* Main.storyboard */,
 				3C6D109725A30ED500674774 /* AppDelegate.swift */,
@@ -236,7 +236,7 @@
 			path = forTest;
 			sourceTree = "<group>";
 		};
-		3CAFBEB025C44AE5003B4124 /* sectionIndexTitles */ = {
+		3CAFBEB025C44AE5003B4124 /* SectionIndexTitles */ = {
 			isa = PBXGroup;
 			children = (
 				3CAFBEB125C44B27003B4124 /* dataForSectionIndexTitles.swift */,
@@ -244,10 +244,10 @@
 				3CFA627B25CA89DD008C74C0 /* HeaderView.swift */,
 				3CFA627E25CA89F5008C74C0 /* HeaderXib.xib */,
 			);
-			path = sectionIndexTitles;
+			path = SectionIndexTitles;
 			sourceTree = "<group>";
 		};
-		3CB7DE1025D9249F00413EA4 /* customAnimators */ = {
+		3CB7DE1025D9249F00413EA4 /* CustomAnimators */ = {
 			isa = PBXGroup;
 			children = (
 				3CB7DE1125D924E500413EA4 /* CustomPushAnimator.swift */,
@@ -255,16 +255,16 @@
 				3CB7DE1825D933F400413EA4 /* CustomNavigationController.swift */,
 				3CB7DE1B25D9579100413EA4 /* CustomInteractiveTransition.swift */,
 			);
-			path = customAnimators;
+			path = CustomAnimators;
 			sourceTree = "<group>";
 		};
-		3CB9005C25C034A200F5DA25 /* controlls */ = {
+		3CB9005C25C034A200F5DA25 /* Controlls */ = {
 			isa = PBXGroup;
 			children = (
 				3CB9005D25C034D400F5DA25 /* ButtonForDislike.swift */,
 				3CB7DE1E25D9671400413EA4 /* CustomTextField.swift */,
 			);
-			path = controlls;
+			path = Controlls;
 			sourceTree = "<group>";
 		};
 		3CFA628425CAFCB6008C74C0 /* News */ = {
