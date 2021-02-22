@@ -44,6 +44,7 @@
 		3CBADBE225CBDE7600F14909 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBADBE125CBDE7600F14909 /* NewsTableViewCell.swift */; };
 		3CBADBE525CBF8B200F14909 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBADBE425CBF8B200F14909 /* CommentsViewController.swift */; };
 		3CC901D125B0A35D00D0AA56 /* FullScreenPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC901D025B0A35D00D0AA56 /* FullScreenPhotoViewController.swift */; };
+		3CCFFFE225E40748000B445A /* VKLoginFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCFFFE125E40748000B445A /* VKLoginFormViewController.swift */; };
 		3CFA627C25CA89DD008C74C0 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFA627B25CA89DD008C74C0 /* HeaderView.swift */; };
 		3CFA627F25CA89F5008C74C0 /* HeaderXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFA627E25CA89F5008C74C0 /* HeaderXib.xib */; };
 		3CFA628225CA8D6B008C74C0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFA628125CA8D6B008C74C0 /* GradientView.swift */; };
@@ -92,6 +93,7 @@
 		3CBADBE125CBDE7600F14909 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		3CBADBE425CBF8B200F14909 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		3CC901D025B0A35D00D0AA56 /* FullScreenPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPhotoViewController.swift; sourceTree = "<group>"; };
+		3CCFFFE125E40748000B445A /* VKLoginFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginFormViewController.swift; sourceTree = "<group>"; };
 		3CFA627B25CA89DD008C74C0 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		3CFA627E25CA89F5008C74C0 /* HeaderXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderXib.xib; sourceTree = "<group>"; };
 		3CFA628125CA8D6B008C74C0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				3C6D10AF25A3592D00674774 /* LoginFormController.swift */,
+				3CCFFFE125E40748000B445A /* VKLoginFormViewController.swift */,
 			);
 			path = LoginFormController;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				3CB7DE1225D924E500413EA4 /* CustomPushAnimator.swift in Sources */,
 				3C6B61A725A9B7BB00261222 /* GroupsController.swift in Sources */,
 				3C8EA6AE25D520FF00FD466D /* FullScreenScrollPhotoViewController.swift in Sources */,
+				3CCFFFE225E40748000B445A /* VKLoginFormViewController.swift in Sources */,
 				3C6D10B025A3592D00674774 /* LoginFormController.swift in Sources */,
 				3C6B61A025A9B76700261222 /* FriendsCell.swift in Sources */,
 				3C6B61A425A9B79C00261222 /* GroupsCell.swift in Sources */,
