@@ -10,6 +10,8 @@ import WebKit
 
 class VKLoginFormViewController: UIViewController {
 
+    let userData = UserFriendsService()
+    
     @IBOutlet weak var webview: WKWebView? {
         didSet {
             webview?.navigationDelegate = self
@@ -20,7 +22,6 @@ class VKLoginFormViewController: UIViewController {
         super.viewDidLoad()
         
         addVKLoginFormToWebview()
-        
     }
     
     func addVKLoginFormToWebview() {
@@ -42,11 +43,6 @@ class VKLoginFormViewController: UIViewController {
         
         webview?.load(request)
     }
-    
-    func getUserFriends() {
-        
-        
-    }
 }
 
 extension VKLoginFormViewController: WKNavigationDelegate {
@@ -67,6 +63,11 @@ extension VKLoginFormViewController: WKNavigationDelegate {
         
         Session.instance.token = token
         decisionHandler(.allow)
+        
+        userData.getUserPhoto()
+        userData.getUserFriends()
+        userData.getUserGroups()
+        userData.getUserSearchGroups()
     }
     
     func makeDictionary(from fragment: String) -> [String: String] {
