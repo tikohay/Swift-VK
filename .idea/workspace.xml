@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:work-with-network" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="22987267-1f41-4807-8dda-b8d09a63c2ec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/VK.xcodeproj/project.xcworkspace/xcuserdata/karahanyanlevon.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/VK.xcodeproj/project.xcworkspace/xcuserdata/karahanyanlevon.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson10" />
+        <entry key="$PROJECT_DIR$" value="75b6390058d5aa7a6566d7b180c0439493ba6210" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,20 +61,60 @@
       <option name="presentableId" value="Default" />
       <updated>1613817638081</updated>
       <workItem from="1613817639405" duration="227000" />
+      <workItem from="1614777429815" duration="962000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="work-with-network" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="done lesson2" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="100" y="128" width="1592" height="892" key="DiffContextDialog" timestamp="1614778290149">
+      <screen x="0" y="25" width="1792" height="1005" />
+    </state>
+    <state x="100" y="128" width="1592" height="892" key="DiffContextDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1614778136062" />
+    <state x="100" y="128" width="1592" height="892" key="DiffContextDialog/0.25.1792.1005@0.25.1792.1005" timestamp="1614778290149" />
+    <state x="706" y="479" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog" timestamp="1614777474039">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="706" y="479" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog/0.0.1792.1120@0.0.1792.1120" timestamp="1614777474039" />
+    <state x="765" y="215" key="RollbackChangesDialog" timestamp="1614778400055">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="765" y="215" key="RollbackChangesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1614778400055" />
     <state x="496" y="307" key="Vcs.Push.Dialog.v2" timestamp="1613817745003">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="496" y="307" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1613817745003" />
-    <state x="314" y="209" key="git4idea.branch.GitSmartOperationDialog" timestamp="1613817684571">
+    <state x="314" y="209" key="git4idea.branch.GitSmartOperationDialog" timestamp="1614778395785">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="314" y="209" key="git4idea.branch.GitSmartOperationDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1613817684571" />
+    <state x="314" y="209" key="git4idea.branch.GitSmartOperationDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1614778395785" />
   </component>
 </project>
