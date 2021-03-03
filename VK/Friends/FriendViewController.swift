@@ -144,7 +144,7 @@ extension FriendViewController: UITableViewDataSource {
     }
 
     func getMyBestFriendAction(at indexPath: IndexPath) -> UIContextualAction {
-
+        
         var user = getUserFromDict(indexPath)
         let letter = usersFirstLetters[indexPath[0]]
         
