@@ -9,12 +9,16 @@ import UIKit
 
 class PhotoFriendController: UIViewController {
 
+    var photosData = UserFriendsService()
+    
     enum Cells {
         static let identifier = "PhotoFriendCell"
     }
 
-    var user: User?
+    var user: UserClass?
+    var photos: [PhotosClass] = []
     
+    @IBOutlet weak var photosCollectionView: UICollectionView?
     @IBOutlet var photoFriendContentView: UICollectionView?
     @IBOutlet weak var friendAvatarImage: UIImageView?
     @IBOutlet weak var friendNameLabel: UILabel?
@@ -24,9 +28,14 @@ class PhotoFriendController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let imageName = user?.avatarName else { return }
-        self.friendAvatarImage?.image = UIImage(named: imageName)
+        
+        photosData.getUserPhoto(userId: user?.userId ?? -1) { (photos) in
+            self.photos = photos
+            self.photosCollectionView?.reloadData()
+        }
+        
         self.friendNameLabel?.text = user?.firstName
+        UIImageView.getPhoto(from: user?.avatarName ?? "", imageView: self.friendAvatarImage!)
         photoFriendContentView?.collectionViewLayout = UICollectionViewFlowLayout()
     }
 
@@ -45,17 +54,14 @@ class PhotoFriendController: UIViewController {
 extension PhotoFriendController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        guard let images = user?.imagesName else { return 0 }
-
-        return images.count
+        return photos.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.identifier, for: indexPath)
         guard let photoCell = cell as? PhotoOfFriendCell else { return cell }
         
-        photoCell.friendImage?.image = UIImage(named: user?.imagesName[indexPath.item] ?? "")
+        UIImageView.getPhoto(from: photos[indexPath.item].urlImage, imageView: photoCell.friendImage!)
         
         return photoCell
     }

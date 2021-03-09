@@ -34,16 +34,16 @@ class SectionIndexTitlesControll: UIControl {
 
         for letter in usersFirstLetters {
             let label = UILabel()
-            
+
             label.text = String(letter)
             label.font = label.font.withSize(11)
-            
+
             addPanGestureRecognizer()
-            
+
             let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapRecognizer(_:)))
             label.addGestureRecognizer(gestureRecognizer)
             label.isUserInteractionEnabled = true
-            
+
             labels.append(label)
         }
         
