@@ -14,9 +14,9 @@
             filePath = "VK/Services/UserFriendsService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "getUserPhoto(completion:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getUserPhoto(userId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

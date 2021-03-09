@@ -12,13 +12,14 @@ class UserFriendsService {
     
     let baseUrl = "https://api.vk.com"
     
-    func getUserPhoto(completion: @escaping ([PhotosClass]) -> Void) {
+    func getUserPhoto(userId: Int, completion: @escaping ([PhotosClass]) -> Void) {
         
         let token = Session.instance.token
         let path = "/method/photos.get"
         let parameters: Parameters = [
             "access_token": token,
             "v": "5.130",
+            "owner_id": userId,
             "album_id": "profile"
         ]
         

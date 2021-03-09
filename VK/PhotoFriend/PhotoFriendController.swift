@@ -29,7 +29,7 @@ class PhotoFriendController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        photosData.getUserPhoto { (photos) in
+        photosData.getUserPhoto(userId: user?.userId ?? -1) { (photos) in
             self.photos = photos
             self.photosCollectionView?.reloadData()
         }
