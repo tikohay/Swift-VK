@@ -8,22 +8,22 @@
 import UIKit
 
 class GroupsController: UITableViewController {
-
-    enum Cells {
-        static let group = "groupsCell"
-    }
     
-    
-    @IBOutlet var groupsTableView: UITableView?
-    @IBOutlet weak var groupsSearchBar: UISearchBar?
-    
-    var groups: [Group] = [] {
+    let userInfo = UserFriendsService()
+    var groupsDuplicate: [GroupClass] = []
+    var groups: [GroupClass] = [] {
         didSet {
             groupsDuplicate = groups
         }
     }
-    var groupsDuplicate: [Group] = []
-
+    
+    enum Cells {
+        static let group = "groupsCell"
+    }
+    
+    @IBOutlet var groupsTableView: UITableView?
+    @IBOutlet weak var groupsSearchBar: UISearchBar?
+    
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         if segue.identifier == "addGroup" {
             guard let availableGroupsController = segue.source as? AvailableGroups else { return }
@@ -31,10 +31,10 @@ class GroupsController: UITableViewController {
             if let indexPath = availableGroupsController.tableView.indexPathForSelectedRow {
                 let group = availableGroupsController.availableGroups[indexPath.row]
 
-                if !groups.contains(where: {$0.name == group.name && $0.image == group.image}) {
-                    groups.append(group)
-                    tableView.reloadData()
-                }
+//                if !groups.contains(where: {$0.name == group.name && $0.image == group.image}) {
+//                    groups.append(group)
+//                    tableView.reloadData()
+//                }
             }
         }
     }
@@ -46,11 +46,14 @@ class GroupsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userInfo.getUserGroups(completion: { (groups) in
+            self.groups = groups
+            self.tableView.reloadData()
+        })
+        
         changeSearchBarState()
         
         groupsSearchBar?.delegate = self
-        
-        groupsDuplicate = groups
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         gesture.cancelsTouchesInView = false

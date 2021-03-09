@@ -9,8 +9,6 @@ import UIKit
 import WebKit
 
 class VKLoginFormViewController: UIViewController {
-
-    let userData = UserFriendsService()
     
     @IBOutlet weak var webview: WKWebView? {
         didSet {
@@ -55,19 +53,14 @@ extension VKLoginFormViewController: WKNavigationDelegate {
         }
         
         let params = makeDictionary(from: fragment)
-        
         guard let token = params["access_token"] else {
             decisionHandler(.cancel)
             return
         }
         
         Session.instance.token = token
-        decisionHandler(.allow)
-        
-        userData.getUserPhoto()
-        userData.getUserFriends()
-        userData.getUserGroups()
-        userData.getUserSearchGroups()
+        decisionHandler(.cancel)
+        performSegue(withIdentifier: "toVKVC", sender: nil)
     }
     
     func makeDictionary(from fragment: String) -> [String: String] {

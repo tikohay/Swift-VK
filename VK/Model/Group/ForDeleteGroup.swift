@@ -1,8 +1,8 @@
 //
-//  Group.swift
+//  ForDelete.swift
 //  VK
 //
-//  Created by Karahanyan Levon on 09.01.2021.
+//  Created by Karahanyan Levon on 09.03.2021.
 //
 
 import UIKit
