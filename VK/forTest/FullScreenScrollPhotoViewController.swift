@@ -9,7 +9,7 @@ import UIKit
 
 class FullScreenScrollPhotoViewController: UIViewController {
     
-    var user: User?
+//    var user: UserClass?
     var images: [String]?
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -17,7 +17,7 @@ class FullScreenScrollPhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        images = user?.imagesName
+//        images = user?.imagesName
         
         setupScrollView()
     }
