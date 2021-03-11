@@ -7,10 +7,8 @@
 
 import UIKit
 
-
-
 class AvailableGroups: UITableViewController {
-
+    
     enum Cells {
         static let availableGroup = "availableGroupCell"
     }
@@ -18,13 +16,9 @@ class AvailableGroups: UITableViewController {
     @IBOutlet var availableGroupsTableView: UITableView?
     @IBOutlet weak var availableGroupSearchBar: UISearchBar!
     
-    let availableGroups = [
-        Group(name: "Институт Благородных Девиц", image: UIImage(named: "ибд")!),
-        Group(name: "the Question", image: UIImage(named: "question")!),
-        Group(name: "Swift Book", image: UIImage(named: "swiftLogo")!)
-    ]
-
-    var availableGroupDuplicate: [Group] = []
+    var userData = UserFriendsService()
+    var availableGroups: [GroupClass] = []
+    
     
     func changeSearchBarState() {
         availableGroupSearchBar.placeholder = "Search:"
@@ -33,7 +27,6 @@ class AvailableGroups: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        availableGroupDuplicate = availableGroups
         
         changeSearchBarState()
         
@@ -47,7 +40,7 @@ class AvailableGroups: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return availableGroupDuplicate.count
+        return availableGroups.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -59,7 +52,7 @@ class AvailableGroups: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.availableGroup, for: indexPath)
         guard let availableGroupCell = cell  as? AvailableGroupsCell else { return cell }
 
-        let group = availableGroupDuplicate[indexPath.row]
+        let group = availableGroups[indexPath.row]
 
         availableGroupCell.set(availableGroup: group)
 
@@ -75,14 +68,19 @@ extension AvailableGroups: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-        availableGroupDuplicate = availableGroups
+        availableGroups = []
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        availableGroupDuplicate = searchText.isEmpty ? availableGroups : availableGroups.filter({ (group) -> Bool in
-            return group.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        })
-        tableView.reloadData()
+        if searchText.isEmpty {
+            availableGroups = []
+            tableView.reloadData()
+        } else {
+            userData.getUserSearchGroups(group: searchText) { (groups) in
+                self.availableGroups = groups
+                self.tableView.reloadData()
+            }
+        }
     }
 }
