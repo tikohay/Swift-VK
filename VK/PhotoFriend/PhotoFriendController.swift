@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PhotoFriendController: UIViewController {
     
@@ -28,8 +29,8 @@ class PhotoFriendController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        photosData.getUserPhoto(userId: user?.userId ?? -1) { (photos) in
-            self.photos = photos
+        photosData.getUserPhoto(userId: user?.userId ?? -1) { () in
+            self.loadData()
             self.photosCollectionView?.reloadData()
         }
         
@@ -47,6 +48,17 @@ class PhotoFriendController: UIViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "toFullScreenVC", sender: photos)
+    }
+    
+    func loadData() {
+        
+        do {
+            let realm = try Realm()
+            let photos = realm.objects(PhotosClass.self)
+            self.photos = Array(photos)
+        } catch {
+            print(error)
+        }
     }
 }
 

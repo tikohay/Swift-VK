@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendViewController: UIViewController {
     
@@ -31,15 +32,27 @@ class FriendViewController: UIViewController {
         friendSearchBar?.placeholder = "Search:"
     }
     
+    func loadData() {
+        
+        do {
+            let realm = try Realm()
+            let friends = realm.objects(UserClass.self)
+            self.usersDuplicate = Array(friends)
+            FriendViewController.allUsers = Array(friends)
+        } catch {
+            print(error)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         changeSearchBarState()
         
         friendsTableView?.showsVerticalScrollIndicator = false
-        userData.getUserFriends() { [weak self] users in
-            FriendViewController.allUsers = users
-            self?.usersDuplicate = users
+        userData.getUserFriends() { [weak self] in
+            
+            self?.loadData()
             self?.friendsTableView?.reloadData()
             
             NotificationCenter.default.post(name: FriendViewController.gotUserFriendsNotification, object: nil)

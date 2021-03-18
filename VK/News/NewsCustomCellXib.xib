@@ -96,11 +96,11 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1D-Up-t7v">
                                 <rect key="frame" x="0.0" y="0.0" width="410" height="406"/>
-                                <mutableString key="text">The conference voted 145-61 in a secret ballot, after members spent hours venting frustrations about Cheney's vote, Rep. Marjorie Taylor Greene's past support for conspiracy theories and House Minority Leader Kevin McCarthy's leadership of the conference following Trump's defeat.
+                                <string key="text">The conference voted 145-61 in a secret ballot, after members spent hours venting frustrations about Cheney's vote, Rep. Marjorie Taylor Greene's past support for conspiracy theories and House Minority Leader Kevin McCarthy's leadership of the conference following Trump's defeat.
 
 "We really did have a terrific vote tonight and terrific time this evening laying out what we're going to do going forward, as wp's defeat.
 
-"We really did have a terrific vote tonight and terrific time this evening laying out what we're going to do going forward, as well as making clear that we're not going to be divided and that we're not going to be in a situation where people can pick off any member of leadership," Cheney told reporters after the meeting. "It was a very resounding acknowledgment that we need to go forward together and that we need to go forward in a way that helps us be back."</mutableString>
+"We really did have a terrific vote tonight and terrific time this evening laying out what we're going to do going forward, as well as making clear that we're not going to be divided and that we're not going to be in a situation where people can pick off any member of leadership," Cheney told reporters after the meeting. "It was a very resounding acknowledgment that we need to go forward together and that we need to go forward in a way that helps us be back."</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

@@ -13,19 +13,22 @@ class UserFriendsService {
     
     let baseUrl = "https://api.vk.com"
     
-    func saveUserData<T: Object>(_ users: [T]) {
+    func saveUserData<T: Object>(_ usersData: [T]) {
         
         do {
             let realm = try Realm()
+            let oldUsersData = realm.objects(T.self)
+//            print(realm.configuration.fileURL)
             realm.beginWrite()
-            realm.add(users)
+            realm.delete(oldUsersData)
+            realm.add(usersData)
             try realm.commitWrite()
         } catch {
             print(error)
         }
     }
     
-    func getUserPhoto(userId: Int, completion: @escaping ([PhotosClass]) -> Void) {
+    func getUserPhoto(userId: Int, completion: @escaping () -> Void) {
         
         let token = Session.instance.token
         let path = "/method/photos.get"
@@ -45,11 +48,11 @@ class UserFriendsService {
             
             self.saveUserData(photos.response.items)
             
-            completion(photos.response.items)
+            completion()
         }
     }
     
-    func getUserFriends(completion: @escaping ([UserClass]) -> Void) {
+    func getUserFriends(completion: @escaping () -> Void) {
         
         let token = Session.instance.token
         let path = "/method/friends.get"
@@ -69,11 +72,11 @@ class UserFriendsService {
             
             self.saveUserData(friends.response.items)
             
-            completion(friends.response.items)
+            completion()
         }
     }
     
-    func getUserGroups(completion: @escaping ([GroupClass]) -> Void) {
+    func getUserGroups(completion: @escaping () -> Void) {
         
         let token = Session.instance.token
         let path = "/method/groups.get"
@@ -92,11 +95,11 @@ class UserFriendsService {
             
             self.saveUserData(groups.response.items)
             
-            completion(groups.response.items)
+            completion()
         }
     }
     
-    func getUserSearchGroups(group name: String, completion: @escaping ([GroupClass]) -> Void) {
+    func getUserSearchGroups(group name: String, completion: @escaping () -> Void) {
         
         let token = Session.instance.token
         let path = "/method/groups.search"
@@ -112,11 +115,11 @@ class UserFriendsService {
         AF.request(url, method: .get, parameters: parameters).responseData { response in
             guard let data = response.value else { return }
             
-            guard let availableGroups = try? JSONDecoder().decode(GroupsResponse.self, from: data) else { return }
+            guard let availableGroups = try? JSONDecoder().decode(AvailableGroupsResponse.self, from: data) else { return }
             
             self.saveUserData(availableGroups.response.items)
             
-            completion(availableGroups.response.items)
+            completion()
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AvailableGroups: UITableViewController {
     
@@ -13,17 +14,17 @@ class AvailableGroups: UITableViewController {
         static let availableGroup = "availableGroupCell"
     }
     
+    var selectedGroup: AvailableGroupsClass?
+    var userData = UserFriendsService()
+    var availableGroups: [AvailableGroupsClass] = [] {
+        didSet {
+            convertedGroup = availableGroups.map { GroupClass(value: $0) }
+        }
+    }
+    var convertedGroup: [GroupClass]?
+    
     @IBOutlet var availableGroupsTableView: UITableView?
     @IBOutlet weak var availableGroupSearchBar: UISearchBar!
-    
-    var userData = UserFriendsService()
-    var availableGroups: [GroupClass] = []
-    
-    
-    func changeSearchBarState() {
-        availableGroupSearchBar.placeholder = "Search:"
-        tableView.tableHeaderView = availableGroupSearchBar
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,25 @@ class AvailableGroups: UITableViewController {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         gesture.cancelsTouchesInView = false
         view.addGestureRecognizer(gesture)
+    }
+    
+    func changeSearchBarState() {
+        availableGroupSearchBar.placeholder = "Search:"
+        tableView.tableHeaderView = availableGroupSearchBar
+    }
+    
+    func loadData() {
+        do {
+            let realm = try Realm()
+            let availableGroups = realm.objects(AvailableGroupsClass.self)
+            self.availableGroups = Array(availableGroups)
+        } catch {
+            print(error)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedGroup = availableGroups[indexPath.row]
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,7 +87,6 @@ class AvailableGroups: UITableViewController {
 extension AvailableGroups: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
         availableGroups = []
     }
     
@@ -77,8 +96,8 @@ extension AvailableGroups: UISearchBarDelegate {
             availableGroups = []
             tableView.reloadData()
         } else {
-            userData.getUserSearchGroups(group: searchText) { (groups) in
-                self.availableGroups = groups
+            userData.getUserSearchGroups(group: searchText) { () in
+                self.loadData()
                 self.tableView.reloadData()
             }
         }
