@@ -22,13 +22,16 @@ class AvailableGroups: UITableViewController {
         }
     }
     var convertedGroup: [GroupClass]?
+    var availableGroupObjects: Results<AvailableGroupsClass>?
+    var token: NotificationToken?
     
     @IBOutlet var availableGroupsTableView: UITableView?
     @IBOutlet weak var availableGroupSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        loadData()
         changeSearchBarState()
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
@@ -42,17 +45,31 @@ class AvailableGroups: UITableViewController {
     }
     
     func loadData() {
-        do {
-            let realm = try Realm()
-            let availableGroups = realm.objects(AvailableGroupsClass.self)
-            self.availableGroups = Array(availableGroups)
-        } catch {
-            print(error)
-        }
+        guard let realm = try? Realm() else { return }
+        
+        self.availableGroupObjects = realm.objects(AvailableGroupsClass.self)
+        
+        token = availableGroupObjects?.observe({ [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update:
+                guard let groupsResults = self?.availableGroupObjects else { return }
+                    
+                self?.availableGroups = Array(groupsResults)
+                
+                tableView.reloadData()
+                
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        })
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedGroup = availableGroups[indexPath.row]
+        selectedGroup = self.availableGroups[indexPath.row]
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -96,10 +113,7 @@ extension AvailableGroups: UISearchBarDelegate {
             availableGroups = []
             tableView.reloadData()
         } else {
-            userData.getUserSearchGroups(group: searchText) { () in
-                self.loadData()
-                self.tableView.reloadData()
-            }
+            userData.getUserSearchGroups(group: searchText)
         }
     }
 }

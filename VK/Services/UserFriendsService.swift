@@ -14,13 +14,13 @@ class UserFriendsService {
     let baseUrl = "https://api.vk.com"
     
     func saveUserData<T: Object>(_ usersData: [T]) {
-        
         do {
             let realm = try Realm()
             let oldUsersData = realm.objects(T.self)
 //            print(realm.configuration.fileURL)
             realm.beginWrite()
             realm.delete(oldUsersData)
+            
             realm.add(usersData)
             try realm.commitWrite()
         } catch {
@@ -28,7 +28,7 @@ class UserFriendsService {
         }
     }
     
-    func getUserPhoto(userId: Int, completion: @escaping () -> Void) {
+    func getUserPhoto(userId: Int) {
         
         let token = Session.instance.token
         let path = "/method/photos.get"
@@ -47,12 +47,10 @@ class UserFriendsService {
             guard let photos = try? JSONDecoder().decode(PhotosResponse.self, from: data) else { return }
             
             self.saveUserData(photos.response.items)
-            
-            completion()
         }
     }
     
-    func getUserFriends(completion: @escaping () -> Void) {
+    func getUserFriends() {
         
         let token = Session.instance.token
         let path = "/method/friends.get"
@@ -71,12 +69,10 @@ class UserFriendsService {
             guard let friends = try? JSONDecoder().decode(FriendsResponse.self, from: data) else { return }
             
             self.saveUserData(friends.response.items)
-            
-            completion()
         }
     }
     
-    func getUserGroups(completion: @escaping () -> Void) {
+    func getUserGroups() {
         
         let token = Session.instance.token
         let path = "/method/groups.get"
@@ -94,12 +90,10 @@ class UserFriendsService {
             guard let groups = try? JSONDecoder().decode(GroupsResponse.self, from: data) else { return }
             
             self.saveUserData(groups.response.items)
-            
-            completion()
         }
     }
     
-    func getUserSearchGroups(group name: String, completion: @escaping () -> Void) {
+    func getUserSearchGroups(group name: String) {
         
         let token = Session.instance.token
         let path = "/method/groups.search"
@@ -118,8 +112,6 @@ class UserFriendsService {
             guard let availableGroups = try? JSONDecoder().decode(AvailableGroupsResponse.self, from: data) else { return }
             
             self.saveUserData(availableGroups.response.items)
-            
-            completion()
         }
     }
 }

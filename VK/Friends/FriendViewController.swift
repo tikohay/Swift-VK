@@ -13,6 +13,10 @@ class FriendViewController: UIViewController {
     var usersDict: [Character: [UserClass]] = [:]
     var usersFirstLetters: [Character] = []
     static var allUsers: [UserClass] = []
+    
+    var friends: Results<UserClass>?
+    var token: NotificationToken?
+    
     static let gotUserFriendsNotification = Notification.Name("gotUserFriendsNotification")
     
     let userData = UserFriendsService()
@@ -32,31 +36,16 @@ class FriendViewController: UIViewController {
         friendSearchBar?.placeholder = "Search:"
     }
     
-    func loadData() {
-        
-        do {
-            let realm = try Realm()
-            let friends = realm.objects(UserClass.self)
-            self.usersDuplicate = Array(friends)
-            FriendViewController.allUsers = Array(friends)
-        } catch {
-            print(error)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         changeSearchBarState()
         
         friendsTableView?.showsVerticalScrollIndicator = false
-        userData.getUserFriends() { [weak self] in
-            
-            self?.loadData()
-            self?.friendsTableView?.reloadData()
-            
-            NotificationCenter.default.post(name: FriendViewController.gotUserFriendsNotification, object: nil)
-        }
+        userData.getUserFriends()
+        loadData()
+
+//            NotificationCenter.default.post(name: FriendViewController.gotUserFriendsNotification, object: nil)
         
         sectionIndexTitlesView?.addTarget(self, action: #selector(sectionLetterChanged), for: .valueChanged)
         friendsTableView?.register(UINib(nibName: "HeaderXib", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
@@ -67,6 +56,32 @@ class FriendViewController: UIViewController {
         gesture.cancelsTouchesInView = false
         
         self.view.addGestureRecognizer(gesture)
+    }
+    
+    func loadData() {
+        guard let realm = try? Realm() else { return }
+        
+        self.friends = realm.objects(UserClass.self)
+        
+        token = friends?.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.friendsTableView else { return }
+            
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update:
+                guard let friendsResults = self?.friends else { return }
+                
+                self?.usersDuplicate = Array(friendsResults)
+                tableView.reloadData()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+
+        }
+        
+//        self.usersDuplicate = Array(friends)
+//        FriendViewController.allUsers = Array(friends)
     }
     
     @objc func sectionLetterChanged() {

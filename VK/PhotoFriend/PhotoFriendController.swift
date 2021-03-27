@@ -16,7 +16,8 @@ class PhotoFriendController: UIViewController {
     
     var photosData = UserFriendsService()
     var user: UserClass?
-    var photos: [PhotosClass] = []
+    var photos: Results<PhotosClass>?
+    var token: NotificationToken?
     
     @IBOutlet weak var photosCollectionView: UICollectionView?
     @IBOutlet var photoFriendContentView: UICollectionView?
@@ -29,10 +30,8 @@ class PhotoFriendController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        photosData.getUserPhoto(userId: user?.userId ?? -1) { () in
-            self.loadData()
-            self.photosCollectionView?.reloadData()
-        }
+        photosData.getUserPhoto(userId: user?.userId ?? -1)
+        loadData()
         
         self.friendNameLabel?.text = user?.firstName
         UIImageView.getPhoto(from: user?.avatarName ?? "", imageView: self.friendAvatarImage!)
@@ -42,38 +41,50 @@ class PhotoFriendController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toFullScreenVC" {
             let photoVC = segue.destination as! FullScreenViewController
-            photoVC.imageNames = (sender as? [PhotosClass])!
+            photoVC.imageNames = (sender as? [PhotosClass])
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toFullScreenVC", sender: photos)
+        guard let photos = photos else { return }
+        performSegue(withIdentifier: "toFullScreenVC", sender: Array(photos))
     }
     
     func loadData() {
         
-        do {
-            let realm = try Realm()
-            let photos = realm.objects(PhotosClass.self)
-            self.photos = Array(photos)
-        } catch {
-            print(error)
+        guard let realm = try? Realm() else { return }
+        self.photos = realm.objects(PhotosClass.self)
+        
+        token = photos?.observe{ [weak self] (changes: RealmCollectionChange) in
+            guard let collectionView = self?.photosCollectionView else { return }
+            
+            switch changes {
+            case .initial, .update:
+                collectionView.reloadData()
+            case .error(let error):
+                fatalError("\(error)")
+            }
         }
     }
 }
 
+
 extension PhotoFriendController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let photos = self.photos else { return 0 }
+        
+        print(photos.count)
         return photos.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.identifier, for: indexPath)
-        guard let photoCell = cell as? PhotoOfFriendCell else { return cell }
-        
+        guard let photoCell = cell as? PhotoOfFriendCell,
+              let photos = photos else { return cell }
+
         UIImageView.getPhoto(from: photos[indexPath.item].urlImage, imageView: photoCell.friendImage!)
-        
+
         return photoCell
     }
     

@@ -21,6 +21,8 @@ class GroupsController: UITableViewController {
             groupsDuplicate = groups
         }
     }
+    var groupObjects: Results<GroupClass>?
+    var token: NotificationToken?
     
     @IBOutlet var groupsTableView: UITableView?
     @IBOutlet weak var groupsSearchBar: UISearchBar?
@@ -28,10 +30,8 @@ class GroupsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userInfo.getUserGroups(completion: { () in
-            self.loadData()
-            self.tableView.reloadData()
-        })
+        userInfo.getUserGroups()
+        loadData()
         
         changeSearchBarState()
         
@@ -46,10 +46,11 @@ class GroupsController: UITableViewController {
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         if segue.identifier == "addGroup" {
             guard let availableGroupsController = segue.source as? AvailableGroups else { return }
-
+            
             if let indexPath = availableGroupsController.tableView.indexPathForSelectedRow {
+                
                 let group = availableGroupsController.convertedGroup?[indexPath.row]
-                print(self.groups)
+
                 if !groups.contains(where: {$0.name == group?.name && $0.imageName == group?.imageName}) {
                     guard let group = group else { return }
                     groups.append(group)
@@ -64,18 +65,29 @@ class GroupsController: UITableViewController {
     }
     
     func loadData() {
-        do {
-            let realm = try Realm()
-            let groups = realm.objects(GroupClass.self)
-            self.groups = Array(groups)
-        } catch {
-            print(error)
-        }
-    }
-    
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        
+        guard let realm = try? Realm() else { return }
+        
+        self.groupObjects = realm.objects(GroupClass.self)
+        
+        token = groupObjects?.observe({ [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+                
+            case .update:
+                guard let groupsResults = self?.groupObjects else { return }
+                    
+                self?.groups = Array(groupsResults)
+                
+                tableView.reloadData()
+                
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        })
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,6 +124,7 @@ class GroupsController: UITableViewController {
 extension GroupsController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
         groupsDuplicate = groups
     }
     
