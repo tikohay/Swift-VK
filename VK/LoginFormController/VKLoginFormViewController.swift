@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import Firebase
 
 class VKLoginFormViewController: UIViewController {
     
@@ -57,12 +58,15 @@ extension VKLoginFormViewController: WKNavigationDelegate {
         }
         
         let params = makeDictionary(from: fragment)
-        guard let token = params["access_token"] else {
+        guard let token = params["access_token"], let userId = params["user_id"] else {
             decisionHandler(.cancel)
             return
         }
         
         Session.instance.token = token
+        Session.instance.userId = Int(userId) ?? 0
+        addIdToFirebaseCollection()
+        
         decisionHandler(.cancel)
         performSegue(withIdentifier: "toVKVC", sender: nil)
     }
@@ -79,6 +83,18 @@ extension VKLoginFormViewController: WKNavigationDelegate {
                 
                 dict[key] = value
                 return dict
+        }
+    }
+    
+    func addIdToFirebaseCollection() {
+        let db = Firestore.firestore()
+
+        db.collection("users").addDocument(data: [
+            "id": Session.instance.userId
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            }
         }
     }
 }

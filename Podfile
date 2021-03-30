@@ -7,6 +7,10 @@ target 'VK' do
 
   pod 'Alamofire', '~> 5.2'
   pod 'RealmSwift'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
 
   # Pods for VK
 

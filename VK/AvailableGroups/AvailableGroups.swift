@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 class AvailableGroups: UITableViewController {
     
@@ -70,6 +71,8 @@ class AvailableGroups: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedGroup = self.availableGroups[indexPath.row]
+        
+        addGroupToFirebaseCollection(selectedGroup)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -94,6 +97,21 @@ class AvailableGroups: UITableViewController {
         availableGroupCell.set(availableGroup: group)
 
         return availableGroupCell
+    }
+    
+    private func addGroupToFirebaseCollection(_ group: AvailableGroupsClass?) {
+        guard let group = group else { return }
+        
+        let db = Firestore.firestore()
+
+        db.collection("addedGroups").addDocument(data: [
+            "id": group.groupId,
+            "name": group.name
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            }
+        }
     }
     
     @objc func endEditing() {

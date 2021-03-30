@@ -32,6 +32,7 @@
 		3C8EA6B125D5294100FD466D /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8EA6B025D5294100FD466D /* AnimationView.swift */; };
 		3C923A4F25C2AEC4007766E8 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C923A4E25C2AEC4007766E8 /* TestView.swift */; };
 		3C923A5225C2EC1A007766E8 /* TestControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C923A5125C2EC1A007766E8 /* TestControll.swift */; };
+		3C9704D2261362260098D747 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C9704D1261362260098D747 /* GoogleService-Info.plist */; };
 		3CA06A0226034737003772BC /* AvailableGroupsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA06A0126034737003772BC /* AvailableGroupsResponse.swift */; };
 		3CA06A062603474E003772BC /* AvailableGroupsResponseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA06A052603474E003772BC /* AvailableGroupsResponseInfo.swift */; };
 		3CA06A09260347E1003772BC /* AvailableGroupsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA06A08260347E1003772BC /* AvailableGroupsClass.swift */; };
@@ -95,6 +96,7 @@
 		3C8EA6B025D5294100FD466D /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		3C923A4E25C2AEC4007766E8 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		3C923A5125C2EC1A007766E8 /* TestControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestControll.swift; sourceTree = "<group>"; };
+		3C9704D1261362260098D747 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CA06A0126034737003772BC /* AvailableGroupsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvailableGroupsResponse.swift; path = VK/model/AvailableGroup/AvailableGroupsResponse.swift; sourceTree = SOURCE_ROOT; };
 		3CA06A052603474E003772BC /* AvailableGroupsResponseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvailableGroupsResponseInfo.swift; path = VK/model/AvailableGroup/AvailableGroupsResponseInfo.swift; sourceTree = SOURCE_ROOT; };
 		3CA06A08260347E1003772BC /* AvailableGroupsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvailableGroupsClass.swift; path = VK/model/AvailableGroup/AvailableGroupsClass.swift; sourceTree = SOURCE_ROOT; };
@@ -277,6 +279,7 @@
 				3C6D109925A30ED500674774 /* SceneDelegate.swift */,
 				3C6D10A025A30ED600674774 /* Assets.xcassets */,
 				3C6D10A225A30ED600674774 /* LaunchScreen.storyboard */,
+				3C9704D1261362260098D747 /* GoogleService-Info.plist */,
 				3C6D10A525A30ED600674774 /* Info.plist */,
 				3C8EA6B725D5906C00FD466D /* forTest */,
 			);
@@ -464,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C6D10A425A30ED600674774 /* LaunchScreen.storyboard in Resources */,
+				3C9704D2261362260098D747 /* GoogleService-Info.plist in Resources */,
 				3CFA627F25CA89F5008C74C0 /* HeaderXib.xib in Resources */,
 				3C6D10A125A30ED600674774 /* Assets.xcassets in Resources */,
 				3CFA628925CAFDC3008C74C0 /* NewsCustomCellXib.xib in Resources */,
