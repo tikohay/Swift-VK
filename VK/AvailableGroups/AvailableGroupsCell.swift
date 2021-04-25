@@ -25,9 +25,8 @@ class AvailableGroupsCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func set(availableGroup: Group) {
+    func set(availableGroup: AvailableGroupsClass) {
         self.availableGroupNameLabel?.text = availableGroup.name
-        self.availableGroupImage?.image = availableGroup.image
+        UIImageView.getPhoto(from: availableGroup.imageName , imageView: self.availableGroupImage!)
     }
-
 }

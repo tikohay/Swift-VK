@@ -48,7 +48,6 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     func set(news: NewsItem) {
-        
         newsImage?.image = UIImage(named: news.newsImageName!)
         newsLogoImage?.image = UIImage(named: news.newsLogoName!)
         newsNameLabel?.text = news.newsName
