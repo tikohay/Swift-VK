@@ -6,13 +6,22 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendViewController: UIViewController {
     
-    var usersDict: [Character: [User]] = [:]
+    var usersDict: [Character: [UserClass]] = [:]
     var usersFirstLetters: [Character] = []
+    static var allUsers: [UserClass] = []
     
-    var usersDuplicate: [User] = [] {
+    var friends: Results<UserClass>?
+    var token: NotificationToken?
+    
+    static let gotUserFriendsNotification = Notification.Name("gotUserFriendsNotification")
+    
+    let userData = UserFriendsService()
+    
+    var usersDuplicate: [UserClass] = [] {
         didSet {
             createUsersDict()
             usersFirstLetters = usersDict.keys.sorted()
@@ -33,8 +42,10 @@ class FriendViewController: UIViewController {
         changeSearchBarState()
         
         friendsTableView?.showsVerticalScrollIndicator = false
-        
-        usersDuplicate = users
+        userData.getUserFriends()
+        loadData()
+
+//            NotificationCenter.default.post(name: FriendViewController.gotUserFriendsNotification, object: nil)
         
         sectionIndexTitlesView?.addTarget(self, action: #selector(sectionLetterChanged), for: .valueChanged)
         friendsTableView?.register(UINib(nibName: "HeaderXib", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
@@ -45,6 +56,32 @@ class FriendViewController: UIViewController {
         gesture.cancelsTouchesInView = false
         
         self.view.addGestureRecognizer(gesture)
+    }
+    
+    func loadData() {
+        guard let realm = try? Realm() else { return }
+        
+        self.friends = realm.objects(UserClass.self)
+        
+        token = friends?.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.friendsTableView else { return }
+            
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update:
+                guard let friendsResults = self?.friends else { return }
+                
+                self?.usersDuplicate = Array(friendsResults)
+                tableView.reloadData()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+
+        }
+        
+//        self.usersDuplicate = Array(friends)
+//        FriendViewController.allUsers = Array(friends)
     }
     
     @objc func sectionLetterChanged() {
@@ -119,7 +156,7 @@ extension FriendViewController: UITableViewDataSource {
         guard let friendCell = cell as? FriendsCell else { return cell }
         
         let user = getUserFromDict(indexPath)
-
+        
         friendCell.set(user: user)
 
         return friendCell
@@ -128,7 +165,7 @@ extension FriendViewController: UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.toPhoto {
             guard let destVC = segue.destination as? PhotoFriendController else { return }
-            destVC.user = sender as? User
+            destVC.user = sender as? UserClass
         }
     }
 
@@ -144,8 +181,8 @@ extension FriendViewController: UITableViewDataSource {
     }
 
     func getMyBestFriendAction(at indexPath: IndexPath) -> UIContextualAction {
-
-        var user = getUserFromDict(indexPath)
+        
+        let user = getUserFromDict(indexPath)
         let letter = usersFirstLetters[indexPath[0]]
         
         guard var usersArray = usersDict[letter] else { return UIContextualAction() }
@@ -177,7 +214,7 @@ extension FriendViewController: UITableViewDataSource {
         return action
     }
     
-    private func getUserFromDict(_ indexPath: IndexPath) -> User {
+    private func getUserFromDict(_ indexPath: IndexPath) -> UserClass {
         
         let letter = usersFirstLetters[indexPath[0]]
         let usersArray = usersDict[letter]
@@ -190,17 +227,17 @@ extension FriendViewController: UITableViewDataSource {
 extension FriendViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        usersDuplicate = users
+        usersDuplicate = FriendViewController.allUsers
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchText.isEmpty {
             sectionIndexTitlesView?.isHidden = false
-            usersDuplicate = users
+            usersDuplicate = FriendViewController.allUsers
         } else {
             sectionIndexTitlesView?.isHidden = true
-            usersDuplicate = users.filter({ (user) -> Bool in
+            usersDuplicate = FriendViewController.allUsers.filter({ (user) -> Bool in
                 return user.firstName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
             })
         }
