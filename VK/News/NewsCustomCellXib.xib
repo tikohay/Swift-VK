@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,15 +19,15 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vce-hT-dpT" customClass="NewsGradientView" customModule="VK" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="30" width="414" height="50"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alexis" translatesAutoresizingMaskIntoConstraints="NO" id="mzo-0j-FAo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mzo-0j-FAo">
                                 <rect key="frame" x="10" y="2.5" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="H2Y-1d-a0n"/>
                                     <constraint firstAttribute="width" constant="45" id="X1t-iO-rw3"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7js-b9-aMJ">
-                                <rect key="frame" x="65" y="14.5" width="200" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7js-b9-aMJ">
+                                <rect key="frame" x="65" y="25" width="200" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Cm8-WS-xx2"/>
                                 </constraints>
@@ -53,7 +53,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="daron2" translatesAutoresizingMaskIntoConstraints="NO" id="qcb-o8-As2">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qcb-o8-As2">
                         <rect key="frame" x="2" y="241" width="410" height="320"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="320" id="pfU-Dd-4YO"/>
@@ -95,12 +95,10 @@
                         <rect key="frame" x="2" y="80" width="410" height="161"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1D-Up-t7v">
-                                <rect key="frame" x="0.0" y="0.0" width="410" height="406"/>
-                                <string key="text">The conference voted 145-61 in a secret ballot, after members spent hours venting frustrations about Cheney's vote, Rep. Marjorie Taylor Greene's past support for conspiracy theories and House Minority Leader Kevin McCarthy's leadership of the conference following Trump's defeat.
-
-"We really did have a terrific vote tonight and terrific time this evening laying out what we're going to do going forward, as wp's defeat.
-
-"We really did have a terrific vote tonight and terrific time this evening laying out what we're going to do going forward, as well as making clear that we're not going to be divided and that we're not going to be in a situation where people can pick off any member of leadership," Cheney told reporters after the meeting. "It was a very resounding acknowledgment that we need to go forward together and that we need to go forward in a way that helps us be back."</string>
+                                <rect key="frame" x="0.0" y="0.0" width="410" height="61"/>
+                                <string key="text" base64-UTF8="YES">
+Cgo
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -172,9 +170,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="alexis" width="720" height="720"/>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
-        <image name="daron2" width="512" height="302"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <systemColor name="secondarySystemBackgroundColor">

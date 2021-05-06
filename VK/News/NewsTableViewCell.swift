@@ -47,11 +47,11 @@ class NewsTableViewCell: UITableViewCell {
         
     }
     
-    func set(news: NewsItem) {
-        newsImage?.image = UIImage(named: news.newsImageName!)
-        newsLogoImage?.image = UIImage(named: news.newsLogoName!)
-        newsNameLabel?.text = news.newsName
-        newsTextLabel?.text = news.newsText
+    func set(newsMain: NewsGroup, newsFill: NewsItem) {
+        UIImageView.getPhoto(from: newsFill.attachments?.first?.photo?.sizes.last?.url ?? "", imageView: newsImage!)
+        UIImageView.getPhoto(from: newsMain.image, imageView: newsLogoImage!)
+        newsNameLabel?.text = newsMain.name
+        newsTextLabel?.text = newsFill.text
     }
     
     override func awakeFromNib() {
