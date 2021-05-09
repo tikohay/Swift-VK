@@ -6,13 +6,24 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendViewController: UIViewController {
     
-    var usersDict: [Character: [User]] = [:]
+    var usersDict: [Character: [UserClass]] = [:]
     var usersFirstLetters: [Character] = []
+    static var allUsers: [UserClass] = []
     
-    var usersDuplicate: [User] = [] {
+    var friends: Results<UserClass>?
+    var token: NotificationToken?
+    
+    let operationQueue = OperationQueue()
+    
+    static let gotUserFriendsNotification = Notification.Name("gotUserFriendsNotification")
+    
+    let userData = UserFriendsService()
+    
+    var usersDuplicate: [UserClass] = [] {
         didSet {
             createUsersDict()
             usersFirstLetters = usersDict.keys.sorted()
@@ -34,7 +45,11 @@ class FriendViewController: UIViewController {
         
         friendsTableView?.showsVerticalScrollIndicator = false
         
-        usersDuplicate = users
+        loadData()
+        
+        let friendOperation = GetFriendsDataOperation()
+        
+        operationQueue.addOperation(friendOperation)
         
         sectionIndexTitlesView?.addTarget(self, action: #selector(sectionLetterChanged), for: .valueChanged)
         friendsTableView?.register(UINib(nibName: "HeaderXib", bundle: nil), forHeaderFooterViewReuseIdentifier: "Header")
@@ -45,6 +60,27 @@ class FriendViewController: UIViewController {
         gesture.cancelsTouchesInView = false
         
         self.view.addGestureRecognizer(gesture)
+    }
+    
+    func loadData() {
+        guard let realm = try? Realm() else { return }
+        
+        self.friends = realm.objects(UserClass.self)
+        token = friends?.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.friendsTableView else { return }
+            
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update:
+                guard let friendsResults = self?.friends else { return }
+                
+                self?.usersDuplicate = Array(friendsResults)
+                tableView.reloadData()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
     }
     
     @objc func sectionLetterChanged() {
@@ -84,7 +120,7 @@ extension FriendViewController: UITableViewDataSource {
     enum Segues {
         static let toPhoto = "ToPhotoController"
     }
-
+    
     enum Cells {
         static let friend = "friendsCell"
     }
@@ -92,20 +128,16 @@ extension FriendViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return usersFirstLetters.count
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let letter = usersFirstLetters[section]
         
         return usersDict[letter]?.count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return String(usersFirstLetters[section])
-//    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Header") as! HeaderView
@@ -113,49 +145,49 @@ extension FriendViewController: UITableViewDataSource {
         
         return header
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.friend, for: indexPath)
         guard let friendCell = cell as? FriendsCell else { return cell }
         
         let user = getUserFromDict(indexPath)
-
+        
         friendCell.set(user: user)
-
+        
         return friendCell
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.toPhoto {
             guard let destVC = segue.destination as? PhotoFriendController else { return }
-            destVC.user = sender as? User
+            destVC.user = sender as? UserClass
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = getUserFromDict(indexPath)
         performSegue(withIdentifier: Segues.toPhoto, sender: user)
     }
-
+    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let bestFriendAction = getMyBestFriendAction(at: indexPath)
         
         return UISwipeActionsConfiguration(actions: [bestFriendAction])
     }
-
+    
     func getMyBestFriendAction(at indexPath: IndexPath) -> UIContextualAction {
-
-        var user = getUserFromDict(indexPath)
+        
+        let user = getUserFromDict(indexPath)
         let letter = usersFirstLetters[indexPath[0]]
         
         guard var usersArray = usersDict[letter] else { return UIContextualAction() }
         
         let action = UIContextualAction(style: .normal, title: "best friend") { (action, view, completion) in
-
+            
             user.isBestFriend.toggle()
-
+            
             usersArray.remove(at: indexPath.row)
-
+            
             if user.isBestFriend {
                 usersArray.insert(user, at: 0)
             } else {
@@ -166,7 +198,7 @@ extension FriendViewController: UITableViewDataSource {
             self.friendsTableView?.reloadData()
             completion(true)
         }
-
+        
         if user.isBestFriend {
             action.image = UIImage(systemName: "star.slash")
             action.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -177,7 +209,7 @@ extension FriendViewController: UITableViewDataSource {
         return action
     }
     
-    private func getUserFromDict(_ indexPath: IndexPath) -> User {
+    private func getUserFromDict(_ indexPath: IndexPath) -> UserClass {
         
         let letter = usersFirstLetters[indexPath[0]]
         let usersArray = usersDict[letter]
@@ -190,17 +222,17 @@ extension FriendViewController: UITableViewDataSource {
 extension FriendViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        usersDuplicate = users
+        usersDuplicate = FriendViewController.allUsers
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchText.isEmpty {
             sectionIndexTitlesView?.isHidden = false
-            usersDuplicate = users
+            usersDuplicate = FriendViewController.allUsers
         } else {
             sectionIndexTitlesView?.isHidden = true
-            usersDuplicate = users.filter({ (user) -> Bool in
+            usersDuplicate = FriendViewController.allUsers.filter({ (user) -> Bool in
                 return user.firstName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
             })
         }

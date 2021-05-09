@@ -21,31 +21,24 @@ class SectionIndexTitlesControll: UIControl {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        addObservers()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
+        addObservers()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(FriendViewController.gotUserFriendsNotification)
     }
     
     private func setupView() {
         
         backgroundColor = .clear
 
-        for letter in usersFirstLetters {
-            let label = UILabel()
-            
-            label.text = String(letter)
-            label.font = label.font.withSize(11)
-            
-            addPanGestureRecognizer()
-            
-            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapRecognizer(_:)))
-            label.addGestureRecognizer(gestureRecognizer)
-            label.isUserInteractionEnabled = true
-            
-            labels.append(label)
-        }
+        createLabels()
         
         stackView = UIStackView(arrangedSubviews: labels)
         
@@ -54,6 +47,34 @@ class SectionIndexTitlesControll: UIControl {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .fillEqually
+    }
+    
+    func createLabels() {
+        for letter in usersFirstLetters {
+            let label = UILabel()
+
+            label.text = String(letter)
+            label.font = label.font.withSize(11)
+
+            addPanGestureRecognizer()
+
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapRecognizer(_:)))
+            label.addGestureRecognizer(gestureRecognizer)
+            label.isUserInteractionEnabled = true
+
+            labels.append(label)
+        }
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(createLettersControll),
+                                               name: FriendViewController.gotUserFriendsNotification,
+                                               object: nil)
+    }
+    
+    @objc func createLettersControll() {
+        setupView()
     }
     
     @objc func tapRecognizer(_ sender: UITapGestureRecognizer) {

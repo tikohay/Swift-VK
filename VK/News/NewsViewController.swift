@@ -11,6 +11,10 @@ class NewsViewController: UIViewController {
 
     var commentLabel: String?
     
+    var news: NewsResponseInfo?
+    
+    var userData = UserFriendsService()
+    
     @IBOutlet weak var newsTableView: UITableView?
     
     override func viewDidLoad() {
@@ -20,6 +24,13 @@ class NewsViewController: UIViewController {
         newsTableView?.delegate = self
         
         newsTableView?.register(UINib(nibName: "NewsCustomCellXib", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        self.userData.getNews { news in
+            DispatchQueue.main.async {
+                self.news = news
+                self.newsTableView?.reloadData()
+            }
+        }
     }
     
     @IBAction func returnToNewsController(segue: UIStoryboardSegue) {
@@ -42,18 +53,21 @@ extension NewsViewController: UITableViewDelegate {
 extension NewsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news.count
+        return news?.groups.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        guard let newsCell = cell as? NewsTableViewCell else { return cell}
+        guard let newsCell = cell as? NewsTableViewCell else { return cell }
         
-        let availableNews = news[indexPath.row]
+        guard
+            let newsMain = news?.groups[indexPath.row],
+            let newsFill = news?.items[indexPath.row]
+        else { return cell}
         
-        newsCell.set(news: availableNews)
+        newsCell.set(newsMain: newsMain, newsFill: newsFill)
         newsCell.commentButton?.addTarget(self, action: #selector(tapCommentButton), for: .touchUpInside)
         newsCell.commentsLabel?.text = commentLabel
         

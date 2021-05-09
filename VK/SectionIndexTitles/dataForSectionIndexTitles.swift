@@ -10,7 +10,7 @@ import Foundation
 var usersFirstLetters: [Character] {
     var letters: Set<Character> = []
     
-    for name in users {
+    for name in FriendViewController.allUsers {
         guard let firstLetter = name.firstName.first else { continue }
         letters.insert(firstLetter)
     }
