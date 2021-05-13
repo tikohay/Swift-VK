@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import RealmSwift
+import PromiseKit
 
 class UserFriendsService {
     
@@ -40,7 +41,7 @@ class UserFriendsService {
         ]
         
         let url = UserFriendsService.baseUrl + path
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseData { response in
             guard let data = response.value else { return }
             
             guard let photos = try? JSONDecoder().decode(PhotosResponse.self, from: data) else { return }
@@ -63,7 +64,7 @@ class UserFriendsService {
         
         let url = UserFriendsService.baseUrl + path
       
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseData { response in
             guard let data = response.value else { return }
             
             guard let friends = try? JSONDecoder().decode(FriendsResponse.self, from: data) else { return }
@@ -84,13 +85,29 @@ class UserFriendsService {
         
         let url = UserFriendsService.baseUrl + path
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
-            guard let data = response.value else { return }
+        Promise<Data> { seal in
+            Alamofire.request(url, method: .get, parameters: parameters).responseData { response in
+
+                switch response.result {
+                case .success(let data):
+                    seal.fulfill(data)
+                case .failure(let error):
+                    seal.reject(error)
+                }
+            }
+        }.then { data -> Promise<[GroupClass]> in
             
-            guard let groups = try? JSONDecoder().decode(GroupsResponse.self, from: data) else { return }
-            
-            self.saveUserData(groups.response.items)
+            do {
+                let groups = try JSONDecoder().decode(GroupsResponse.self, from: data)
+                
+                return Promise.value(groups.response.items)
+            } catch(let error) {
+                throw error
+            }
+        }.done { groups in
+            self.saveUserData(groups)
         }
+    
     }
     
     func getUserSearchGroups(group name: String) {
@@ -106,7 +123,7 @@ class UserFriendsService {
         
         let url = UserFriendsService.baseUrl + path
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseData { response in
             guard let data = response.value else { return }
             
             guard let availableGroups = try? JSONDecoder().decode(AvailableGroupsResponse.self, from: data) else { return }
@@ -128,7 +145,7 @@ class UserFriendsService {
         let url = UserFriendsService.baseUrl + path
         
         DispatchQueue.global(qos: .userInteractive).async {
-            AF.request(url, method: .get, parameters: parameters).responseData() { response in
+            Alamofire.request(url, method: .get, parameters: parameters).responseData() { response in
                 guard let data = response.value else { return }
                 guard let newsData = try? JSONDecoder().decode(NewsResponse.self, from: data) else { return }
                 

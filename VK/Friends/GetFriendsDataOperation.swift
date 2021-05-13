@@ -74,7 +74,7 @@ class GetFriendsDataOperation: Operation {
         
         let url = UserFriendsService.baseUrl + path
         
-        AF.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { response in
             guard let data = response.value else { return }
             
             guard let friends = try? JSONDecoder().decode(FriendsResponse.self, from: data) else { return }
