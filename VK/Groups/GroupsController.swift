@@ -24,6 +24,8 @@ class GroupsController: UITableViewController {
     var groupObjects: Results<GroupClass>?
     var token: NotificationToken?
     
+    var photoService: PhotoService?
+    
     @IBOutlet var groupsTableView: UITableView?
     @IBOutlet weak var groupsSearchBar: UISearchBar?
     
@@ -39,6 +41,8 @@ class GroupsController: UITableViewController {
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         gesture.cancelsTouchesInView = false
+        
+        photoService = PhotoService(container: groupsTableView!)
         
         tableView.addGestureRecognizer(gesture)
     }
@@ -104,7 +108,9 @@ class GroupsController: UITableViewController {
 
         let group = groupsDuplicate[indexPath.row]
 
-        groupCell.set(group: group)
+        guard let avatar = photoService?.photo(atIndexpath: indexPath, byUrl: group.imageName) else { return cell }
+        
+        groupCell.set(group: group, avatar: avatar)
 
         return groupCell
     }

@@ -107,7 +107,6 @@ class UserFriendsService {
         }.done { groups in
             self.saveUserData(groups)
         }
-    
     }
     
     func getUserSearchGroups(group name: String) {

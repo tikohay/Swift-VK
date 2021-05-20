@@ -17,6 +17,8 @@ class FriendViewController: UIViewController {
     var friends: Results<UserClass>?
     var token: NotificationToken?
     
+    var photoService: PhotoService?
+    
     let operationQueue = OperationQueue()
     
     static let gotUserFriendsNotification = Notification.Name("gotUserFriendsNotification")
@@ -48,6 +50,8 @@ class FriendViewController: UIViewController {
         loadData()
         
         let friendOperation = GetFriendsDataOperation()
+        
+        photoService = PhotoService(container: friendsTableView!)
         
         operationQueue.addOperation(friendOperation)
         
@@ -152,7 +156,9 @@ extension FriendViewController: UITableViewDataSource {
         
         let user = getUserFromDict(indexPath)
         
-        friendCell.set(user: user)
+        guard let avatar = photoService?.photo(atIndexpath: indexPath, byUrl: user.avatarName) else { return cell }
+        
+        friendCell.set(user: user, avatar: avatar)
         
         return friendCell
     }

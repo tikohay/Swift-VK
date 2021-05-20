@@ -68,7 +68,6 @@ class PhotoFriendController: UIViewController {
     }
 }
 
-
 extension PhotoFriendController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
