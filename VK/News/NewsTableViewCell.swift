@@ -13,6 +13,9 @@ class NewsTableViewCell: UITableViewCell {
     var isLike = false
     var likeCount = 0
     
+    let readmoreFont = UIFont(name: "Helvetica-Oblique", size: 11.0)
+    let readmoreFontColor = UIColor.black
+    
     @IBOutlet weak var newsTextScrollView: UIScrollView?
     @IBOutlet weak var newsLogoImage: UIImageView? {
         didSet {

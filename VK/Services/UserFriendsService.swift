@@ -131,15 +131,19 @@ class UserFriendsService {
         }
     }
     
-    func getNews(completionHandler: @escaping (NewsResponseInfo) -> Void) {
+    func getNews(startTime: Int? = nil, startFrom: Int? = nil, completionHandler: @escaping (NewsResponseInfo) -> Void) {
         
         let token = Session.instance.token
         let path = "/method/newsfeed.get"
-        let parameters: Parameters = [
+        var parameters: Parameters = [
             "access_token": token,
             "v": "5.130",
             "count": "100"
         ]
+        
+        if startTime != nil {
+            parameters["start_time"] = startTime
+        }
         
         let url = UserFriendsService.baseUrl + path
         
@@ -155,5 +159,4 @@ class UserFriendsService {
         }
     }
 }
-
 

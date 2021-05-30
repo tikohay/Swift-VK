@@ -13,6 +13,7 @@ class NewsPhoto: Object, Decodable {
     var sizes = List<NewsSize>()
     
     enum CodingKeys: String, CodingKey {
+        case date
         case sizes
     }
     
