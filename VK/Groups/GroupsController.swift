@@ -6,32 +6,57 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GroupsController: UITableViewController {
-
+    
     enum Cells {
         static let group = "groupsCell"
     }
     
-    
-    @IBOutlet var groupsTableView: UITableView?
-    @IBOutlet weak var groupsSearchBar: UISearchBar?
-    
-    var groups: [Group] = [] {
+    let userInfo = UserFriendsService()
+    var groupsDuplicate: [GroupClass] = []
+    var groups: [GroupClass] = [] {
         didSet {
             groupsDuplicate = groups
         }
     }
-    var groupsDuplicate: [Group] = []
-
+    var groupObjects: Results<GroupClass>?
+    var token: NotificationToken?
+    
+    var photoService: PhotoService?
+    
+    @IBOutlet var groupsTableView: UITableView?
+    @IBOutlet weak var groupsSearchBar: UISearchBar?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        userInfo.getUserGroups()
+        loadData()
+        
+        changeSearchBarState()
+        
+        groupsSearchBar?.delegate = self
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        gesture.cancelsTouchesInView = false
+        
+        photoService = PhotoService(container: groupsTableView!)
+        
+        tableView.addGestureRecognizer(gesture)
+    }
+    
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         if segue.identifier == "addGroup" {
             guard let availableGroupsController = segue.source as? AvailableGroups else { return }
-
+            
             if let indexPath = availableGroupsController.tableView.indexPathForSelectedRow {
-                let group = availableGroupsController.availableGroups[indexPath.row]
+                
+                let group = availableGroupsController.convertedGroup?[indexPath.row]
 
-                if !groups.contains(where: {$0.name == group.name && $0.image == group.image}) {
+                if !groups.contains(where: {$0.name == group?.name && $0.imageName == group?.imageName}) {
+                    guard let group = group else { return }
                     groups.append(group)
                     tableView.reloadData()
                 }
@@ -43,23 +68,30 @@ class GroupsController: UITableViewController {
         groupsSearchBar?.placeholder = "Search:"
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func loadData() {
         
-        changeSearchBarState()
+        guard let realm = try? Realm() else { return }
         
-        groupsSearchBar?.delegate = self
+        self.groupObjects = realm.objects(GroupClass.self)
         
-        groupsDuplicate = groups
-        
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
-        gesture.cancelsTouchesInView = false
-        
-        tableView.addGestureRecognizer(gesture)
-    }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        token = groupObjects?.observe({ [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+                
+            case .update:
+                guard let groupsResults = self?.groupObjects else { return }
+                    
+                self?.groups = Array(groupsResults)
+                
+                tableView.reloadData()
+                
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        })
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,7 +108,9 @@ class GroupsController: UITableViewController {
 
         let group = groupsDuplicate[indexPath.row]
 
-        groupCell.set(group: group)
+        guard let avatar = photoService?.photo(atIndexpath: indexPath, byUrl: group.imageName) else { return cell }
+        
+        groupCell.set(group: group, avatar: avatar)
 
         return groupCell
     }
@@ -96,6 +130,7 @@ class GroupsController: UITableViewController {
 extension GroupsController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
         groupsDuplicate = groups
     }
     
