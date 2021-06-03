@@ -32,6 +32,7 @@
 		3C7DD54725BAC4CC00197351 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DD54625BAC4CC00197351 /* FriendViewController.swift */; };
 		3C8EA6AE25D520FF00FD466D /* FullScreenScrollPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8EA6AD25D520FF00FD466D /* FullScreenScrollPhotoViewController.swift */; };
 		3C8EA6B125D5294100FD466D /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8EA6B025D5294100FD466D /* AnimationView.swift */; };
+		3C909329266670BC00760C0C /* TestTextureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909328266670BC00760C0C /* TestTextureViewController.swift */; };
 		3C923A4F25C2AEC4007766E8 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C923A4E25C2AEC4007766E8 /* TestView.swift */; };
 		3C923A5225C2EC1A007766E8 /* TestControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C923A5125C2EC1A007766E8 /* TestControll.swift */; };
 		3C9704D2261362260098D747 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C9704D1261362260098D747 /* GoogleService-Info.plist */; };
@@ -39,6 +40,8 @@
 		3CA06A062603474E003772BC /* AvailableGroupsResponseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA06A052603474E003772BC /* AvailableGroupsResponseInfo.swift */; };
 		3CA06A09260347E1003772BC /* AvailableGroupsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA06A08260347E1003772BC /* AvailableGroupsClass.swift */; };
 		3CAFBEB225C44B27003B4124 /* DataForSectionIndexTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAFBEB125C44B27003B4124 /* DataForSectionIndexTitles.swift */; };
+		3CB6B77D2667D76800C23390 /* ASPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB6B77C2667D76800C23390 /* ASPhotosViewController.swift */; };
+		3CB6B77F2667E57400C23390 /* ASPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB6B77E2667E57400C23390 /* ASPhotoCell.swift */; };
 		3CB7DE1225D924E500413EA4 /* CustomPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE1125D924E500413EA4 /* CustomPushAnimator.swift */; };
 		3CB7DE1625D92E2800413EA4 /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE1525D92E2800413EA4 /* CustomPopAnimator.swift */; };
 		3CB7DE1925D933F400413EA4 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7DE1825D933F400413EA4 /* CustomNavigationController.swift */; };
@@ -106,6 +109,7 @@
 		3C7DD54625BAC4CC00197351 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		3C8EA6AD25D520FF00FD466D /* FullScreenScrollPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenScrollPhotoViewController.swift; sourceTree = "<group>"; };
 		3C8EA6B025D5294100FD466D /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		3C909328266670BC00760C0C /* TestTextureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTextureViewController.swift; sourceTree = "<group>"; };
 		3C923A4E25C2AEC4007766E8 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		3C923A5125C2EC1A007766E8 /* TestControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestControll.swift; sourceTree = "<group>"; };
 		3C9704D1261362260098D747 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 		3CA06A052603474E003772BC /* AvailableGroupsResponseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvailableGroupsResponseInfo.swift; path = VK/model/AvailableGroup/AvailableGroupsResponseInfo.swift; sourceTree = SOURCE_ROOT; };
 		3CA06A08260347E1003772BC /* AvailableGroupsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvailableGroupsClass.swift; path = VK/model/AvailableGroup/AvailableGroupsClass.swift; sourceTree = SOURCE_ROOT; };
 		3CAFBEB125C44B27003B4124 /* DataForSectionIndexTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataForSectionIndexTitles.swift; sourceTree = "<group>"; };
+		3CB6B77C2667D76800C23390 /* ASPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASPhotosViewController.swift; sourceTree = "<group>"; };
+		3CB6B77E2667E57400C23390 /* ASPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASPhotoCell.swift; sourceTree = "<group>"; };
 		3CB7DE1125D924E500413EA4 /* CustomPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimator.swift; sourceTree = "<group>"; };
 		3CB7DE1525D92E2800413EA4 /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
 		3CB7DE1825D933F400413EA4 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
@@ -181,6 +187,8 @@
 				3C1C6D4025AE054B00E73FF4 /* PhotoFriendController.swift */,
 				3C1C6D4425AE058D00E73FF4 /* PhotoOfFriendCell.swift */,
 				3CB7DE2225D96D4000413EA4 /* FullScreenViewController.swift */,
+				3CB6B77C2667D76800C23390 /* ASPhotosViewController.swift */,
+				3CB6B77E2667E57400C23390 /* ASPhotoCell.swift */,
 			);
 			path = PhotoFriend;
 			sourceTree = "<group>";
@@ -317,6 +325,7 @@
 				3CC901D025B0A35D00D0AA56 /* FullScreenPhotoViewController.swift */,
 				3C923A4E25C2AEC4007766E8 /* TestView.swift */,
 				3C923A5125C2EC1A007766E8 /* TestControll.swift */,
+				3C909328266670BC00760C0C /* TestTextureViewController.swift */,
 			);
 			path = forTest;
 			sourceTree = "<group>";
@@ -567,11 +576,13 @@
 				3CB7DE1925D933F400413EA4 /* CustomNavigationController.swift in Sources */,
 				3CFA628C25CB0DA5008C74C0 /* NewsGradientView.swift in Sources */,
 				3C11AF3A2646EEF900B2E43C /* GetFriendsDataOperation.swift in Sources */,
+				3CB6B77D2667D76800C23390 /* ASPhotosViewController.swift in Sources */,
 				3CFC4D2225F7B2000058078E /* FriendsResponse.swift in Sources */,
 				3CA06A062603474E003772BC /* AvailableGroupsResponseInfo.swift in Sources */,
 				3C923A5225C2EC1A007766E8 /* TestControll.swift in Sources */,
 				3CF00991263D399A000FB24D /* NewsResponse.swift in Sources */,
 				3CFC4D2A25F7B2660058078E /* GroupsResponse.swift in Sources */,
+				3C909329266670BC00760C0C /* TestTextureViewController.swift in Sources */,
 				3CFA628225CA8D6B008C74C0 /* GradientView.swift in Sources */,
 				3CB7DE1225D924E500413EA4 /* CustomPushAnimator.swift in Sources */,
 				3C6B61A725A9B7BB00261222 /* GroupsController.swift in Sources */,
@@ -600,6 +611,7 @@
 				3C1C6D4125AE054B00E73FF4 /* PhotoFriendController.swift in Sources */,
 				3CBADBE525CBF8B200F14909 /* CommentsViewController.swift in Sources */,
 				3C1C6D4525AE058D00E73FF4 /* PhotoOfFriendCell.swift in Sources */,
+				3CB6B77F2667E57400C23390 /* ASPhotoCell.swift in Sources */,
 				3CB7DE2325D96D4000413EA4 /* FullScreenViewController.swift in Sources */,
 				3CFA628625CAFCEB008C74C0 /* NewsViewController.swift in Sources */,
 				3CFC4D2D25F7B27C0058078E /* GroupsResponseInfo.swift in Sources */,

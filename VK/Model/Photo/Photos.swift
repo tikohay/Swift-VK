@@ -12,10 +12,12 @@ class PhotosClass: Object, Decodable {
     @objc dynamic var userId = 0
     @objc dynamic var urlImage = ""
     var imageNames = List<String>()
+    var date = 0
     
     enum CodingKeys: String, CodingKey {
         case userId = "owner_id"
         case sizes
+        case date
     }
     
     enum UrlKeys: String, CodingKey {
@@ -27,11 +29,12 @@ class PhotosClass: Object, Decodable {
         
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.userId = try values.decode(Int.self, forKey: .userId)
-        var urlValues = try values.nestedUnkeyedContainer(forKey: .sizes)
-        var lastUrlValue = try urlValues.nestedContainer(keyedBy: UrlKeys.self)
+        self.date = try values.decode(Int.self, forKey: .date)
+        var sizes = try values.nestedUnkeyedContainer(forKey: .sizes)
+        var lastUrlValue = try sizes.nestedContainer(keyedBy: UrlKeys.self)
         
-        while !urlValues.isAtEnd {
-            lastUrlValue = try urlValues.nestedContainer(keyedBy: UrlKeys.self)
+        while !sizes.isAtEnd {
+            lastUrlValue = try sizes.nestedContainer(keyedBy: UrlKeys.self)
         }
         
         self.urlImage = try lastUrlValue.decode(String.self, forKey: .url)

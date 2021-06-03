@@ -13,6 +13,7 @@ target 'VK' do
   pod 'Firebase/Firestore'
   pod 'PromiseKit', '~> 6.8'
   pod 'PromiseKit/Alamofire', '~> 6.0'
+  pod "Texture"	
 
   # Pods for VK
 

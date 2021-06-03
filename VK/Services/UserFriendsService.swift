@@ -50,6 +50,27 @@ class UserFriendsService {
         }
     }
     
+    func getUserPhoto(userId: Int, completionHandler: @escaping ([PhotosClass]) -> Void) {
+        
+        let token = Session.instance.token
+        let path = "/method/photos.get"
+        let parameters: Parameters = [
+            "access_token": token,
+            "v": "5.130",
+            "owner_id": userId,
+            "album_id": "profile"
+        ]
+        
+        let url = UserFriendsService.baseUrl + path
+        Alamofire.request(url, method: .get, parameters: parameters).responseData { response in
+            guard let data = response.value else { return }
+            
+            guard let photos = try? JSONDecoder().decode(PhotosResponse.self, from: data) else { return }
+            
+            completionHandler(photos.response.items)
+        }
+    }
+    
     func getUserFriends() {
         
         let token = Session.instance.token

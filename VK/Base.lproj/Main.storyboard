@@ -284,7 +284,7 @@
         <!--Full Screen View Controller-->
         <scene sceneID="TJz-Dz-KcE">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="hhY-wi-9pz" customClass="FullScreenViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FullScreenID" modalPresentationStyle="fullScreen" id="hhY-wi-9pz" customClass="FullScreenViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ipp-dO-Pi6">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="789"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -621,6 +621,46 @@
                 <exit id="sQw-KB-0Lx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2916" y="1159"/>
+        </scene>
+        <!--Test Texture View Controller-->
+        <scene sceneID="Pz0-hy-JAA">
+            <objects>
+                <viewController id="jpT-lm-uNN" customClass="TestTextureViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Zi-K7-rxZ">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aRu-DB-R3L">
+                                <rect key="frame" x="64" y="313" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="2SK-wn-2jX"/>
+                                    <constraint firstAttribute="height" constant="300" id="XRs-nE-iuJ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xu0-D3-hgf">
+                                <rect key="frame" x="191" y="714" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="jpT-lm-uNN" eventType="touchUpInside" id="8zB-W7-of6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vCD-DG-Sfd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aRu-DB-R3L" firstAttribute="centerX" secondItem="3Zi-K7-rxZ" secondAttribute="centerX" id="Pma-Sw-Fwe"/>
+                            <constraint firstItem="aRu-DB-R3L" firstAttribute="centerY" secondItem="3Zi-K7-rxZ" secondAttribute="centerY" id="Rvn-Nc-ZKf"/>
+                            <constraint firstItem="Xu0-D3-hgf" firstAttribute="top" secondItem="aRu-DB-R3L" secondAttribute="bottom" constant="101" id="TYw-EH-HX8"/>
+                            <constraint firstItem="Xu0-D3-hgf" firstAttribute="centerX" secondItem="vCD-DG-Sfd" secondAttribute="centerX" id="zTm-Rz-r20"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="testImage" destination="aRu-DB-R3L" id="Yh8-sK-AZC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VXL-3c-Hp8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2890.6542056074763" y="1918.5745140388769"/>
         </scene>
         <!--Login Form View Controller-->
         <scene sceneID="DDa-LC-5rD">

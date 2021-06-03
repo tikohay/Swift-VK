@@ -163,16 +163,19 @@ extension FriendViewController: UITableViewDataSource {
         return friendCell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.toPhoto {
-            guard let destVC = segue.destination as? PhotoFriendController else { return }
-            destVC.user = sender as? UserClass
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == Segues.toPhoto {
+//            guard let destVC = segue.destination as? PhotoFriendController else { return }
+//            destVC.user = sender as? UserClass
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = getUserFromDict(indexPath)
-        performSegue(withIdentifier: Segues.toPhoto, sender: user)
+        let toVC = ASPhotosViewController()
+        toVC.userId = user.userId
+        toVC.titleText = user.firstName + " " + user.lastName
+        navigationController?.pushViewController(toVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
