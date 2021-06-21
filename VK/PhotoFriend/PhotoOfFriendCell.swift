@@ -18,7 +18,7 @@ class PhotoOfFriendCell: UICollectionViewCell {
     }
     @IBOutlet weak var likeButton: UIButton? {
         didSet {
-            likeButton?.tintColor = #colorLiteral(red: 0, green: 0.4524545074, blue: 0.9992441535, alpha: 1)
+            likeButton?.tintColor = UIColor.mainBlueColor
             addDoubleTapForLike()
         }
     }
@@ -69,7 +69,7 @@ class PhotoOfFriendCell: UICollectionViewCell {
             
         } else {
             self.likeButton?.setImage(UIImage(systemName: "heart"), for: .normal)
-            self.likeButton?.tintColor = #colorLiteral(red: 0, green: 0.4524545074, blue: 0.9992441535, alpha: 1)
+            self.likeButton?.tintColor = UIColor.mainBlueColor
             }
     }
     

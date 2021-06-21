@@ -47,7 +47,7 @@ class NewsTableViewCell: UITableViewCell {
             likeButton?.setTitle(" \(likeCount)", for: .normal)
         } else {
             likeButton?.setImage(UIImage(systemName: "heart"), for: .normal)
-            likeButton?.tintColor = #colorLiteral(red: 0.0138685042, green: 0.4820565581, blue: 0.9983528256, alpha: 1)
+            likeButton?.tintColor = UIColor.mainBlueColor
             likeButton?.setTitle("", for: .normal)
             likeCount -= 1
         }

@@ -55,6 +55,9 @@
 		3CC901D125B0A35D00D0AA56 /* FullScreenPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC901D025B0A35D00D0AA56 /* FullScreenPhotoViewController.swift */; };
 		3CCFFFE225E40748000B445A /* VKLoginFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCFFFE125E40748000B445A /* VKLoginFormViewController.swift */; };
 		3CCFFFED25E42E91000B445A /* UserFriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCFFFEC25E42E91000B445A /* UserFriendsService.swift */; };
+		3CE2F5902680D3270075A426 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE2F58F2680D3270075A426 /* UIColor + Extension.swift */; };
+		3CE2F5922680DACD0075A426 /* UserFriendsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE2F5912680DACD0075A426 /* UserFriendsAdapter.swift */; };
+		3CE2F5942680E79E0075A426 /* FriendCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE2F5932680E79E0075A426 /* FriendCellFactory.swift */; };
 		3CE36D4D2656AEA1004516AA /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE36D4C2656AEA1004516AA /* PhotoService.swift */; };
 		3CF00991263D399A000FB24D /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF00990263D399A000FB24D /* NewsResponse.swift */; };
 		3CF00993263D3A68000FB24D /* NewsResponseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF00992263D3A68000FB24D /* NewsResponseInfo.swift */; };
@@ -132,6 +135,9 @@
 		3CC901D025B0A35D00D0AA56 /* FullScreenPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPhotoViewController.swift; sourceTree = "<group>"; };
 		3CCFFFE125E40748000B445A /* VKLoginFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginFormViewController.swift; sourceTree = "<group>"; };
 		3CCFFFEC25E42E91000B445A /* UserFriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFriendsService.swift; sourceTree = "<group>"; };
+		3CE2F58F2680D3270075A426 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		3CE2F5912680DACD0075A426 /* UserFriendsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFriendsAdapter.swift; sourceTree = "<group>"; };
+		3CE2F5932680E79E0075A426 /* FriendCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCellFactory.swift; sourceTree = "<group>"; };
 		3CE36D4C2656AEA1004516AA /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		3CF00990263D399A000FB24D /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
 		3CF00992263D3A68000FB24D /* NewsResponseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponseInfo.swift; sourceTree = "<group>"; };
@@ -376,6 +382,7 @@
 			children = (
 				3CCFFFEC25E42E91000B445A /* UserFriendsService.swift */,
 				3CE36D4C2656AEA1004516AA /* PhotoService.swift */,
+				3CE2F5912680DACD0075A426 /* UserFriendsAdapter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -413,6 +420,7 @@
 				3CFC4D2125F7B2000058078E /* FriendsResponse.swift */,
 				3CFC4D2525F7B2260058078E /* FriendsResponseInfo.swift */,
 				3C6B61BC25A9BD2800261222 /* User.swift */,
+				3CE2F5932680E79E0075A426 /* FriendCellFactory.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -432,6 +440,7 @@
 			children = (
 				3CFC4D3925F7B6370058078E /* UIImageViewExtension.swift */,
 				3C766D34266368E5001848C5 /* UILabelExtension.swift */,
+				3CE2F58F2680D3270075A426 /* UIColor + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -604,12 +613,14 @@
 				3CF009A5263D9308000FB24D /* NewsPhoto.swift in Sources */,
 				3CFA627C25CA89DD008C74C0 /* HeaderView.swift in Sources */,
 				3CF0099F263D85BE000FB24D /* NewsItem.swift in Sources */,
+				3CE2F5942680E79E0075A426 /* FriendCellFactory.swift in Sources */,
 				3C923A4F25C2AEC4007766E8 /* TestView.swift in Sources */,
 				3CB9005E25C034D400F5DA25 /* ButtonForDislike.swift in Sources */,
 				3C6B61C125A9BD3B00261222 /* Group.swift in Sources */,
 				3C6D109825A30ED500674774 /* AppDelegate.swift in Sources */,
 				3C1C6D4125AE054B00E73FF4 /* PhotoFriendController.swift in Sources */,
 				3CBADBE525CBF8B200F14909 /* CommentsViewController.swift in Sources */,
+				3CE2F5922680DACD0075A426 /* UserFriendsAdapter.swift in Sources */,
 				3C1C6D4525AE058D00E73FF4 /* PhotoOfFriendCell.swift in Sources */,
 				3CB6B77F2667E57400C23390 /* ASPhotoCell.swift in Sources */,
 				3CB7DE2325D96D4000413EA4 /* FullScreenViewController.swift in Sources */,
@@ -630,6 +641,7 @@
 				3CFC4D3A25F7B6370058078E /* UIImageViewExtension.swift in Sources */,
 				3C766D35266368E5001848C5 /* UILabelExtension.swift in Sources */,
 				3C6D109A25A30ED500674774 /* SceneDelegate.swift in Sources */,
+				3CE2F5902680D3270075A426 /* UIColor + Extension.swift in Sources */,
 				3CAFBEB225C44B27003B4124 /* DataForSectionIndexTitles.swift in Sources */,
 				3C6B61B025A9B9EB00261222 /* AvailableGroupsCell.swift in Sources */,
 				3CF009A7263DA849000FB24D /* NewsSize.swift in Sources */,

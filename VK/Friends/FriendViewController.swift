@@ -10,6 +10,8 @@ import RealmSwift
 
 class FriendViewController: UIViewController {
     
+    private let viewModelFactory = FriendCellViewModelFactory()
+    
     var usersDict: [Character: [UserClass]] = [:]
     var usersFirstLetters: [Character] = []
     static var allUsers: [UserClass] = []
@@ -24,6 +26,8 @@ class FriendViewController: UIViewController {
     static let gotUserFriendsNotification = Notification.Name("gotUserFriendsNotification")
     
     let userData = UserFriendsService()
+    
+    private let userFriendsService = UserFriendsAdapter()
     
     var usersDuplicate: [UserClass] = [] {
         didSet {
@@ -47,7 +51,12 @@ class FriendViewController: UIViewController {
         
         friendsTableView?.showsVerticalScrollIndicator = false
         
-        loadData()
+        userFriendsService.getUserFriends { [weak self] friends in
+            guard let tableView = self?.friendsTableView else { return }
+            
+            self?.usersDuplicate = Array(friends)
+            tableView.reloadData()
+        }
         
         let friendOperation = GetFriendsDataOperation()
         
@@ -158,7 +167,9 @@ extension FriendViewController: UITableViewDataSource {
         
         guard let avatar = photoService?.photo(atIndexpath: indexPath, byUrl: user.avatarName) else { return cell }
         
-        friendCell.set(user: user, avatar: avatar)
+        let viewModel = viewModelFactory.constructViewModel(from: user)
+        
+        friendCell.set(user: viewModel, avatar: avatar)
         
         return friendCell
     }
@@ -213,7 +224,7 @@ extension FriendViewController: UITableViewDataSource {
             action.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         } else {
             action.image = UIImage(systemName: "star")
-            action.backgroundColor = #colorLiteral(red: 0, green: 0.4524545074, blue: 0.9992441535, alpha: 1)
+            action.backgroundColor = UIColor.mainBlueColor
         }
         return action
     }
