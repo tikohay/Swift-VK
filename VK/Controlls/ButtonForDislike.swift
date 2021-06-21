@@ -27,7 +27,7 @@ class ButtonForDislike: UIControl {
         
         dislikeButton.setTitleColor(.red, for: .normal)
         dislikeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: CGFloat(10))
-        dislikeButton.tintColor = #colorLiteral(red: 0, green: 0.4524545074, blue: 0.9992441535, alpha: 1)
+        dislikeButton.tintColor = UIColor.mainBlueColor
         dislikeButton.addTarget(self, action: #selector(tappedDislike), for: .touchUpInside)
     }
     
@@ -42,7 +42,7 @@ class ButtonForDislike: UIControl {
     
     func setCountOfDislikeLabel() {
         countOfDislikeLabel.font = countOfDislikeLabel.font.withSize(15)
-        countOfDislikeLabel.textColor = #colorLiteral(red: 0, green: 0.4524545074, blue: 0.9992441535, alpha: 1)
+        countOfDislikeLabel.textColor = UIColor.mainBlueColor
     }
     
     @objc func tappedDislike(_ sender: UIButton) {

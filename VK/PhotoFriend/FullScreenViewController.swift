@@ -9,8 +9,9 @@ import UIKit
 
 class FullScreenViewController: UIViewController {
 
-    var user: User?
-    var imageNames: [String]?
+//    var userData = UserFriendsService()
+//    var user: UserClass?
+    var imageNames: [PhotosClass]?
     var currentImageIndex = 0
     
     @IBOutlet weak var friendImage: UIImageView?
@@ -20,9 +21,11 @@ class FullScreenViewController: UIViewController {
         
         view.backgroundColor = .black
         
-        imageNames = user?.imagesName
+        guard let friendImage = friendImage else { return }
         
-        friendImage?.image = UIImage(named: imageNames!.first!)
+        let photo = imageNames?[currentImageIndex].urlImage
+        
+        UIImageView.getPhoto(from: photo ?? "", imageView: friendImage)
         
         let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipe(_:)))
         swipeDownGesture.direction = .down
@@ -46,16 +49,16 @@ class FullScreenViewController: UIViewController {
             
             self.currentImageIndex += 1
             
-            guard let image = imageNames?[self.currentImageIndex] else { return }
+            let image = imageNames?[self.currentImageIndex].urlImage
             
             UIView.animate(withDuration: 0.2) {
                 
                 self.friendImage?.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
                 self.friendImage?.layer.opacity = 0
             } completion: { _ in
+                guard let friendImage = self.friendImage else { return }
                 self.friendImage?.transform = CGAffineTransform(translationX: self.view.frame.width, y: 0)
-                self.friendImage?.image = UIImage(named: image)
-                
+                UIImageView.getPhoto(from: image ?? "", imageView: friendImage)
                 UIView.animate(withDuration: 0.2) {
                     self.friendImage?.transform = .identity
                     self.friendImage?.layer.opacity = 1
@@ -67,15 +70,16 @@ class FullScreenViewController: UIViewController {
             
             currentImageIndex -= 1
             
-            guard let image = imageNames?[self.currentImageIndex] else { return }
+            let image = imageNames?[self.currentImageIndex].urlImage
             
             UIView.animate(withDuration: 0.2) {
                 
                 self.friendImage?.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
                 self.friendImage?.layer.opacity = 0
             } completion: { _ in
+                guard let friendImage = self.friendImage else { return }
                 self.friendImage?.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
-                self.friendImage?.image = UIImage(named: image)
+                UIImageView.getPhoto(from: image ?? "", imageView: friendImage)
                 UIView.animate(withDuration: 0.2) {
                     self.friendImage?.transform = .identity
                     self.friendImage?.layer.opacity = 1

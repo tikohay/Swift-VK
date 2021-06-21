@@ -33,14 +33,9 @@ class FriendsCell: UITableViewCell {
         friendImage.clipsToBounds = true
     }
     
-    func set(user: User) {
-        self.friendNameLabel?.text = user.firstName + " " + user.lastName
-        self.friendImage?.image = UIImage(named: user.avatarName)
-        
-        if (user.isBestFriend) {
-            self.starIconImage?.isHidden = false
-        } else {
-            self.starIconImage?.isHidden = true
-        }
+    func set(user: FriendCellViewModel, avatar: UIImage) {
+        self.friendNameLabel?.text = user.name
+        friendImage?.image = avatar
+        self.starIconImage?.isHidden = user.starIconHidden
     }
 }
